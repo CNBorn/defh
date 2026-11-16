@@ -4,23 +4,37 @@ This document defines stable principles for evolving Definition Harness itself.
 
 ## Intent
 
-Definition Harness should improve without forcing unnecessary churn on repositories that already adopted an earlier version.
+Definition Harness should improve by learning from adopted repositories, without forcing churn on them.
 
 The framework may become clearer, stricter, or better documented over time, but compatibility should be an explicit design concern for every version change.
 
-## Principle 1: Preserve Adopted Repository Compatibility
+## Principle 1: The Framework Dissolves Into Each Adopter
+
+- After adoption, the repository's own definitions and principles are its authority. The framework is the source they started from, not a dependency.
+- An adopter's local rules evolve with the project and may drift from the current framework. Drift is valid.
+- Upgrades are optional, including breaking versions. A breaking version changes what new adopters start from. It does not make an existing adopter invalid.
+- A framework change must not require an adopter to act. An adopter that upgrades takes only the parts it wants.
+
+## Principle 2: Learn From Adopters
+
+- The framework evolves mainly from practices that worked in adopted repositories, and from failures observed there.
+- An adopter that evolved well is the framework's implemented behavior. Audit a framework draft against that adopter before release.
+- A PR that adds or removes a framework rule cites the adopter evidence: repository, PR or commit, and the observed result.
+- Keep project-specific practice in the adopter. Generalize only the part that does not depend on the project's domain.
+
+## Principle 3: Preserve Adopted Repository Compatibility
 
 - Existing adopted repositories should not need to rename docs paths, rewrite stable definitions, or restructure working documentation systems for a non-breaking version.
-- Full-adoption repositories using `documentation/` remain valid unless a breaking version explicitly says otherwise.
+- Full-adoption repositories using `documentation/` remain valid. A breaking version does not change this; see Principle 1.
 - Scoped-adoption repositories using `docs/` or another established docs path remain valid when their local documentation rules are consistent.
 
-## Principle 2: Additive Guidance Before Migration
+## Principle 4: Additive Guidance Before Migration
 
 - Prefer adding guidance, templates, and clarification over requiring migration.
 - When a new concept is introduced, explain how it relates to the previous model.
 - Migration guidance should be optional for non-breaking releases and mandatory only for explicitly breaking releases.
 
-## Principle 3: Compatibility Is Tested Against Adoption Shapes
+## Principle 5: Compatibility Is Tested Against Adoption Shapes
 
 Before changing core rules or templates, evaluate at least these adoption shapes:
 
@@ -30,7 +44,7 @@ Before changing core rules or templates, evaluate at least these adoption shapes
 
 The change should not make any valid prior adoption shape invalid unless the release is intentionally breaking.
 
-## Principle 4: Version Changes Need Operator-Facing Notes
+## Principle 6: Version Changes Need Operator-Facing Notes
 
 - Update `VERSION` when the framework version changes.
 - Update `CHANGELOG.md` with the behavior of the version change.
@@ -38,7 +52,7 @@ The change should not make any valid prior adoption shape invalid unless the rel
 - Update `ADOPTION.md` when adoption modes, compatibility rules, or migration expectations change.
 - PRs that change framework rules or templates should explain compatibility impact.
 
-## Principle 5: Keep Meta-Rules In The Repository
+## Principle 7: Keep Meta-Rules In The Repository
 
 Important rules for evolving the harness belong in repository files, not only in prompts or discussion history.
 

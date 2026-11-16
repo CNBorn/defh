@@ -6,6 +6,7 @@
 - Architecture, evaluation, process, and reusable procedures are topics, not document kinds. A definition may keep short scoped rationale next to the value it explains. Their existing files remain valid; each statement is a definition or a principle by the same test.
 - Working files, such as studies and research notes, are valid under any name and are not authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
 - Add the Same-Change Update principle: a behavior change updates its owning definition and its tests in the same change.
+- Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and framework changes cite adopter evidence.
 - Existing adopters need no action for this part. No file is renamed or removed.
 - Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
 
