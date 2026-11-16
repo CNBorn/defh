@@ -16,8 +16,10 @@ This is a breaking release for the framework's own files: several files and temp
 - A statement is authority when it lives in a definition or principles file, or in a topic file that local documentation rules name as governing, such as a runbook or `architecture.md`. Other files are not authority.
 - Definitions describe current behavior, including the mechanism and what the code does not do, and must be checkable. Principles state intent, including checkable invariants that current code may not guarantee; a principle should state its violation condition when one can be stated.
 - A check that does not exist yet is not a definition: the invariant goes to principles and the work to a working file.
+- A rubric with pass conditions that gates acceptance is a definition; a rubric that only guides judgment is a principle.
+- The pre-merge "verify tested and documented separately" step becomes the principle that tested and documented are different; there is no required pre-merge step.
 - Architecture, evaluation, process, and reusable procedures are topics, not document kinds. A definition may keep rationale that governs only its own scope. The two definition levels are now called domain and topic definitions; "system" and "item" remain valid.
-- Working files, such as studies and research notes, are valid under any name, are not authority, and need not be listed. A "Draft" status line does not change authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
+- Working files, such as studies and research notes, are valid under any name, are not authority, and need not be listed. defh neither requires nor limits them. A "Draft" status line does not change authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
 - Add the Same-Change Update principle: a behavior change updates its owning definition, the tests that check the changed claims, and derived outputs such as manuals and skills in the same change. Derived outputs are not authority. Evidence artifacts, such as formal models, follow the scope's definition.
 
 ### Audit
@@ -41,7 +43,7 @@ This is a breaking release for the framework's own files: several files and temp
 ### Evolution and positioning
 
 - Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and the framework learns from adopters.
-- Rewrite POSITIONING around the pitch: two kinds of document and one action, no required process, attention as the scarce resource, and the Lisp-inspired idea that the framework is written in its own terms. This repository's validation includes a self-audit when rules or templates change.
+- Rewrite POSITIONING around the pitch: two kinds of document and one action, no required process, attention as the scarce resource, and the Lisp-inspired idea that the framework is written in its own terms.
 - Move the helpdesk platform example to 2.0. Its escalation definition records a mechanism that does not guarantee one of its principles, so an audit of the example finds a gap.
 
 ## 1.4.2

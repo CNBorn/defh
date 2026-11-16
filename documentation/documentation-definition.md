@@ -26,7 +26,7 @@ Architecture, evaluation, and process are topics, not kinds. These files remain 
 
 | Topic file | Covers |
 | --- | --- |
-| `<scope>-evaluation-definition.md` | Existing checks, scenarios, and the evidence a release requires (definition). Invariants that no check covers yet, and rubrics (principles). Work to build a missing check belongs in a working file. |
+| `<scope>-evaluation-definition.md` | Existing checks, scenarios, rubrics with pass conditions that gate acceptance, and the evidence a release requires (definition). Invariants that no check covers yet, and rubrics that only guide judgment (principles). Work to build a missing check belongs in a working file. |
 | `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
 | Process file, such as a development flow | Required end state of a change (definition). Working preferences (principles). |
 | Runbooks | Operational and incident procedures that operators must follow (definition). Operational judgment calls (principles). |
@@ -119,7 +119,7 @@ Evaluation is a topic. A repository may keep it in the scope's definition or in 
 
 - Existing scenarios, browser checks, workload measurements, and the evidence a release requires are definitions.
 - An invariant that no check covers yet is a principle. Building the check is work for a working file.
-- A rubric is a principle. Define observable dimensions, examples and anti-patterns from real review, and calibrate it against human review. Revise it when it misses repeated failures. Add weights only when justified.
+- A rubric with stated pass conditions that gates acceptance is a definition. A rubric that only guides judgment is a principle. Either way, define observable dimensions, examples and anti-patterns from real review, and calibrate it against human review. Revise it when it misses repeated failures. Add weights only when justified.
 - Keep tools vendor-neutral unless the repository standardizes on one.
 
 ## Writing Rules
@@ -187,14 +187,12 @@ A scope map is optional. It is a table in the local documentation definition wit
 
 ## Optional Working Docs
 
-Working docs are valid whenever the work produces findings, evidence, or plans worth keeping, such as a study.
-Agents do not create progress, handoff, or tracking files by default; create those only when requested by the user or required by explicit repo-local policy.
-Delegation, duration, multiple iterations, or crossing sessions does not itself require these files.
+defh neither requires nor limits working docs. A repository may set its own rules for them.
+Delegation, duration, multiple iterations, or crossing sessions does not itself require them.
 Planning and execution state may stay in the task, session, or external harness.
 Working docs, such as studies, plans, or progress notes, take any name and are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
 A progress file, when kept, contains enough current state to resume without chat history.
-Before closure, move lasting behavior, rationale, and evaluation rules into the stable docs or runbooks that own them.
-Keep one-time decisions in PR history. Delete working files unless they are intentionally retained as history.
+Lasting conclusions move to definitions or principles; see [Working Files](documentation-principles.md#working-files). One-time decisions may stay in PR history.
 
 ## Update And Review
 
@@ -210,5 +208,4 @@ When behavior changes, search docs by scope terminology and check the relevant d
 | New adopted scope | Its first definition, and the scope map row when a map exists |
 | How to run, development commands, reading route, or validation commands | Entry file. See [Entry File](#entry-file). |
 
-Before merge, remove stale terminology and confirm docs match the final implementation.
-Verify `tested` and `documented` separately.
+Tested and documented are different; see [Tested And Documented Are Different](documentation-principles.md#tested-and-documented-are-different).

@@ -88,7 +88,7 @@ The docs are part of the operating model of the repository, not just pre-coding 
 ## Written In Its Own Terms
 
 The framework is written in its own two kinds of document: `documentation-definition.md`, `documentation-principles.md`, `definition-audit-definition.md`, and `evolution-principles.md`.
-Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code and data share one representation, so a program can read and change programs. Here, the rules for documentation are documentation, and the audit that checks a repository also checks the framework. This repository's own validation includes running that audit on itself.
+Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code and data share one representation, so a program can read and change programs. Here, the rules for documentation are documentation, and the audit that checks a repository also checks the framework.
 
 The same idea shapes adoption. After adoption the framework dissolves into the repository. The repository's own definitions and principles are its authority, and they evolve with the project. The framework learns from what adopters do well; upgrading is optional.
 

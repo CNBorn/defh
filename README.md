@@ -39,4 +39,4 @@ Validation:
 test "$(readlink AGENTS.md)" = README.md
 ```
 
-Also check changed Markdown links and Mermaid diagrams. When rules or templates change, run a Definition Audit of this repository against itself. Record results in the PR.
+Also check changed Markdown links and Mermaid diagrams. Record results in the PR.

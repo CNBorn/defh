@@ -38,7 +38,7 @@ A fact and a gap differ in what they name. "The spend step takes no lock" is a f
 
 - Classify by statement, not by topic. Architecture, evaluation, process, and reusable procedures are topics. Each splits into definition statements and principle statements.
   - Architecture: "the domain layer imports only the contracts package, and lint enforces it" is a definition. "The domain layer stays independent of orchestration" is a principle.
-  - Evaluation: "the release check fails when p95 latency exceeds 200 ms on workload W" is a definition. "p95 stays under 200 ms" without an existing check is a principle. A rubric for copy quality is a principle.
+  - Evaluation: "the release check fails when p95 latency exceeds 200 ms on workload W" is a definition. "p95 stays under 200 ms" without an existing check is a principle. A rubric with stated pass conditions that gates acceptance is a definition, like any manual acceptance item. A rubric used only to guide judgment is a principle.
   - Process: "every PR records its validation commands" is a definition when it is current practice. "Work in small slices" is a principle.
   - Procedure: "use a single homography only with at least 10 markers" is a definition of that workflow when later work must follow it. A reusable procedure that later work may use or skip is a working file.
 - Files organized by topic, such as `architecture.md`, an evaluation definition, or a runbook, remain valid and remain authority when the local documentation rules name them as governing. Their statements sort into the two kinds by the same test.
@@ -112,10 +112,8 @@ Short, concrete text is easier to inspect for errors. Use STE-inspired writing p
 
 The repository knowledge layer captures final behavior, stable rationale, and reusable evaluation criteria. Final validation evidence makes those claims reviewable.
 
-- Implementation plans, attempt logs, progress, and handoff notes are transient execution state.
-- External harnesses or sessions may manage that state without creating repository files.
-- Create temporary working documents only when requested by the user or required by explicit repo-local policy.
-- Existing repositories may retain their opted-in tracking conventions; adopting defh does not require them to add or remove working artifacts.
+- Implementation plans, attempt logs, progress, and handoff notes are transient execution state. They may stay in a session or external tool, or in working files.
+- defh neither requires nor limits working files. A repository may set its own rules for them.
 
 ## Testable Precision
 
@@ -125,14 +123,12 @@ Definitions must be specific enough that a developer can derive verification fro
 - "Retries up to 3 times with exponential backoff" is testable.
 - "Retries reasonably" is not.
 
-## Separate Quality Gates
+## Tested And Documented Are Different
 
-`tested` and `documented` are separate checks.
+A change can be tested but not documented, or documented but not tested.
 
-- A change can be tested but not documented.
-- A change can be documented but not tested.
-- Both must be verified explicitly before merge.
-- Neither gate substitutes for the other.
+- Passing tests do not show that a definition is current. A current definition does not show that behavior is tested.
+- Neither substitutes for the other. An audit can report either one missing.
 
 ## Discoverability Over Prompt Memory
 
