@@ -22,7 +22,7 @@ Other files are not authority and are not listed.
 
 A gap closes only by a code change or by a risk acceptance written in principles.
 
-- Only a person may decide gaps in: <paths or scopes, such as anything that moves money or deletes user data. Write "None" if agents may decide all gaps.>
+- Only a person may decide gaps in: <paths or scopes, such as anything that deletes user data or changes access control. Write "None" if agents may decide all gaps.>
 - Elsewhere, <a person | an agent with the reason recorded in the PR> may decide.
 
 ## Validation
