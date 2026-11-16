@@ -3,7 +3,7 @@
 Adopt Definition Harness in a new repository or in one part of an existing repository.
 
 The framework has two kinds of authority, definitions and principles, and one action, audit. See [Two Kinds Of Authority](documentation/documentation-principles.md#two-kinds-of-authority).
-After adoption, the repository's own definitions and principles are its authority. They may evolve and drift from this framework; see [harness evolution principles](documentation/harness-evolution-principles.md).
+After adoption, the repository's own definitions and principles are its authority. They may evolve and drift from this framework; see [evolution principles](documentation/evolution-principles.md).
 
 ## Compatibility
 
@@ -100,4 +100,4 @@ Reference the pinned audit contract or adapt it; copying it is not required. Eve
 
 ## Framework Versions
 
-Non-breaking updates preserve the framework's paths, filenames, and valid adoption shapes. Breaking updates may remove them. [Harness evolution principles](documentation/harness-evolution-principles.md) state what every version owes adopters.
+Non-breaking updates preserve the framework's paths, filenames, and valid adoption shapes. Breaking updates may remove them. [Evolution principles](documentation/evolution-principles.md) state what every version owes adopters.

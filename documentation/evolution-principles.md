@@ -1,4 +1,4 @@
-# Harness Evolution Principles
+# Evolution Principles
 
 This document defines stable principles for evolving Definition Harness itself.
 
@@ -58,7 +58,7 @@ Important rules for evolving the harness belong in repository files, not only in
 
 Use:
 
-- `documentation/harness-evolution-principles.md` for stable evolution principles
+- `documentation/evolution-principles.md` for stable evolution principles
 - `ADOPTION.md` for adopter-facing compatibility and adoption guidance
 - `CHANGELOG.md` for version-level changes
 - PR descriptions for one-time migration notes, rejected options, and validation details

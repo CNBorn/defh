@@ -28,7 +28,7 @@ Adapt `templates/` paths and validation commands to the target repository before
 
 ## Working In This Repository
 
-Follow the documents above for changes to this repository, and [harness evolution principles](documentation/harness-evolution-principles.md) for changes to rules, templates, versions, or compatibility.
+Follow the documents above for changes to this repository, and [evolution principles](documentation/evolution-principles.md) for changes to rules, templates, versions, or compatibility.
 Preserve compatibility for adopted repositories unless a breaking version is planned; see [Framework Versions](ADOPTION.md#framework-versions).
 
 Validation:
