@@ -2,9 +2,16 @@
 
 ## Short Version
 
-Definition Harness is a spec-anchored repository harness for making software projects legible and evolvable over time.
+Two kinds of document and one action.
+Definitions say what the system does now. Principles say what it must achieve and why. Audit finds where they disagree with each other, with the code, and with the tests.
 
-It is not only for greenfield AI-native projects. It is designed so older repositories can add structure gradually, subsystem by subsystem, without adopting a heavy process all at once.
+That is the whole framework. There is no required process: no lifecycle of specs, plans, and tasks to follow, no roles to play, no tracking files to keep. An audit reports what is inconsistent; it does not say who fixes it or how. A capable agent reads the finding and works out the change itself.
+
+It is small on purpose. Agents can already do most of the work. What runs out is attention, the reader's and the agent's. Every extra concept is something each session must load, understand, and then decide to skip. Two nouns and one verb fit in every session's context, every time.
+
+It is inspired by Lisp. The framework is written in its own two kinds of document, so the rules and the knowledge they govern have the same form, and an audit can check the framework itself. After adoption the framework dissolves into the repository: the repository's own definitions and principles become the authority and evolve with the project.
+
+It works for new repositories and for old ones. An existing repository starts with one scope and grows from there.
 
 ## The Problem
 
@@ -32,6 +39,8 @@ The model is two nouns and one verb:
 
 Nothing else is required. Architecture, evaluation, and process are topics, not kinds: each statement about them is a definition or a principle. The entry file acts as a map, not a manual; agents load it every session, so it only routes.
 
+When behavior does not guarantee an intent, nobody writes the gap down as documentation. The definition records the facts, including what the code does not do; the principle states the intent and, when it can, the condition that would violate it. The audit puts the two side by side and reports the gap. Editing the principle does not make the gap go away; only a code change or an explicit, reasoned acceptance of the risk does.
+
 The goal is not just better prompting. The goal is a codebase that gradually becomes easier to reason about.
 
 Just as important: this documentation layer is meant to live inside a larger quality system, not replace one.
@@ -43,6 +52,8 @@ Many spec-driven workflows are centered on the lifecycle of a piece of work:
 `idea -> spec -> plan -> tasks -> implementation`
 
 That is useful, but it is not the main focus here.
+
+Those workflows ask every contributor, human or agent, to remember a process. This framework asks them to remember two nouns and one verb.
 
 This kit is centered on the lifecycle of repository knowledge:
 
@@ -77,7 +88,7 @@ The docs are part of the operating model of the repository, not just pre-coding 
 ## Written In Its Own Terms
 
 The framework is written in its own two kinds of document: `documentation-definition.md`, `documentation-principles.md`, `definition-audit-definition.md`, and `harness-evolution-principles.md`.
-Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code as data.
+Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code and data share one representation, so a program can read and change programs. Here, the rules for documentation are documentation, and the audit that checks a repository also checks the framework. This repository's own validation includes running that audit on itself.
 
 The same idea shapes adoption. After adoption the framework dissolves into the repository. The repository's own definitions and principles are its authority, and they evolve with the project. The framework learns from what adopters do well; upgrading is optional.
 

@@ -1,6 +1,6 @@
 # Definition Harness
 
-Two kinds of document, definitions and principles, and one action, audit, that keep software behavior, intent, and tests aligned. The current version is in `VERSION`.
+Two kinds of document, definitions and principles, and one action, audit, that keep software behavior, intent, and tests aligned. No required process. Why it is this small, and how Lisp inspired it: [Short Version](POSITIONING.md#short-version). The current version is in `VERSION`.
 
 This file is the only entry for humans and agents. `AGENTS.md` is a symlink to it.
 It only routes. Rules live in `ADOPTION.md` and `documentation/`; this file does not restate them.
@@ -37,4 +37,4 @@ Validation:
 test "$(readlink AGENTS.md)" = README.md
 ```
 
-Also check changed Markdown links and Mermaid diagrams. Record results in the PR.
+Also check changed Markdown links and Mermaid diagrams. When rules or templates change, run a Definition Audit of this repository against itself. Record results in the PR.
