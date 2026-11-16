@@ -21,10 +21,12 @@ Useful triggers include scoped adoption, substantial refactors, release preparat
 Before inspecting implementation, record:
 
 - requested scope, governing documents, and exclusions
-- repository revision and any relevant uncommitted changes
+- the window: the start and end revisions the audit covers, and any relevant uncommitted changes
 - available validation commands, environments, and evidence
 - limits on execution, time, or cost, when supplied
 
+The end revision is the repository state the audit reads. The start revision is the end of the previous audit of the same scope, when one is known. Without a previous audit, the window starts at the beginning of history or at a revision the requester names.
+Changes inside the window get the closest attention. Claims outside the window may still be checked.
 If the scope is unclear, resolve it before claiming complete coverage.
 Scope expansion must be explicit. Related documents may be read without claiming their entire scope was audited.
 
@@ -60,7 +62,7 @@ Principle-based findings must cite the decision rule, observed choice, and reaso
 
 The report must include:
 
-- scope, repository state, governing documents, and exclusions
+- scope, window (start and end revisions), governing documents, and exclusions
 - a claim-to-evidence table with claim references, results, implementation evidence, and separate test evidence
 - actionable findings with observed behavior, expected behavior or principle, impact, evidence, and recommended next action
 - documentation conflicts and material behavior without a definition within the selected scope
@@ -80,6 +82,14 @@ When the user also requests repairs, capture findings before making changes and 
 Do not rewrite definitions to match code merely to clear a finding.
 
 Keep the report in the session or PR by default. Create a repository report only when requested or required by explicit repo-local policy.
+
+### Last-Run Record
+
+A last-run record lets the next audit of the same scope find its start revision. It is optional.
+
+- Recommended: put the scope and end revision in the audit PR title or first line, such as `Definition audit: <scope> through <revision>`. The next audit finds it by searching PRs. No shared file is needed, so concurrent audits do not conflict.
+- A repository may keep the record in a file instead, such as a table of review angles and their last end revisions. The record is not authority; keep it out of the claims that an audit checks.
+- Items deferred to a later audit go with the record.
 Capture lasting behavior, rationale, and reusable checks in their existing authoritative documents after an agreed correction.
 An audit report is evidence, not new behavior authority.
 

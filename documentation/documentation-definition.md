@@ -85,7 +85,7 @@ Ownership:
 - The entry file must not restate steps, parameters, defaults, limits, or constraints that a definition owns.
 - The entry file describes a workflow directly only when no definition owns it, such as installation and development commands.
 - Each always-visible constraint is one sentence and a link to the document that owns it.
-- The local documentation definition, through its adopted-scope table when one exists, is the only document index. The entry file links to it and does not list definitions.
+- When the repository keeps a [scope map](#scope-map), the map is the only document index. The entry file links to it and does not list definitions. Without a map, the entry file links to the docs directory or the local documentation definition.
 - Content without an owner does not go in the entry file. Move it to the document that owns it, or leave it to code and tests. Examples are code structure, test coverage lists, generated file names, and per-feature descriptions.
 - Write the entry file in the repository's documentation language, which is the language of its definitions. Do not keep a translated copy of the entry file or of definition content.
 - Other tool-specific entry paths, such as `CLAUDE.md`, may also be relative symlinks to `README.md`.
@@ -106,7 +106,7 @@ Unless the user requests one or explicit repo-local policy requires one, agents 
 This rule applies to standalone indexes and exhaustive tables or lists inside other documents.
 
 - Use a short, task-oriented set of entry points and explicit related-document links.
-- Adopted-scope tables may record authority and validation boundaries. They do not need to enumerate every document in a scope.
+- A scope map may record authority and validation for each scope. It does not need to enumerate every document in a scope.
 - Generated inventories and one-time discovery output are permitted. Do not copy generated listings into stable docs for manual upkeep.
 - Preserve existing navigation during compatible adoption. Do not delete or reorganize it solely to adopt this guidance.
 - An opted-in inventory remains navigation. It does not define behavior or replace the linked authority.
@@ -168,8 +168,19 @@ See [Definition Audit](definition-audit-definition.md) for the audit contract.
 ## Scoped Adoption
 
 A scope may be a subsystem, workflow, API, operator process, or product area.
+A scope is adopted when it has a definition. The definition marks the boundary; no separate list is required.
 Complete repository coverage is not required. For each adopted scope, keep definitions, principles, tests, and validation expectations aligned.
+Code without a definition keeps its existing practice. An audit reports missing definitions only within the scope it was asked to check.
 Existing full-adoption repositories keep their structure.
+
+### Scope Map
+
+A scope map is optional. It is a table in the local documentation definition with one row per scope: the scope, its definition, its principles, and how it is verified.
+
+- Keep a map when readers need one place to find each scope's authority and checks. Skip it when the docs directory and links are enough.
+- When a map exists, it is the only document index. A new scope adds one row in the same change as its first definition.
+- The map is navigation. It is not authority and does not replace the definitions it links.
+- Existing adopted-scope tables remain valid as scope maps.
 
 ## Optional Working Docs
 
@@ -202,7 +213,7 @@ When behavior changes, search docs by scope terminology and check the relevant d
 | Checks, rubrics, or evidence requirements | Matching evaluation definitions |
 | Boundaries, ownership, dependencies, or lifecycle | `architecture.md` |
 | User/operator workflows or operations that a definition owns | That definition only |
-| New adopted scope | Adopted-scope table only |
+| New adopted scope | Its first definition, and the scope map row when a map exists |
 | How to run, development commands, reading route, or validation commands | Entry file. See [Entry File](#entry-file). |
 
 Before merge, remove stale terminology and confirm docs match the final implementation.

@@ -6,7 +6,7 @@ Read Definition Harness's `documentation/definition-audit-definition.md`, or the
 ## Request
 
 Run a Definition Audit for `<adopted scope or explicitly requested set of scopes>`.
-Read local AGENTS instructions and documentation rules. Record the repository revision and relevant uncommitted changes.
+Read local AGENTS instructions and documentation rules. Record the window: the start revision (the end of the previous audit of this scope, if known) and the end revision, plus relevant uncommitted changes.
 State the scope, governing documents, exclusions, and any execution limits before claiming coverage.
 
 ## Review
@@ -20,6 +20,7 @@ State the scope, governing documents, exclusions, and any execution limits befor
 ## Deliverable
 
 Report findings in this session or PR. Do not create repository report files unless separately requested or required by explicit local policy.
+State the window (start and end revisions) at the top. When findings lead to a PR, name the scope and end revision in its title or first line, such as `Definition audit: <scope> through <revision>`, so the next audit can find its start.
 Include a claim-to-evidence table, actionable findings, commands and results, evidence limits, and coverage of reviewed and unreviewed areas.
 Missing tests are not proof of incorrect implementation. Passing tests or static inspection are not proof of all runtime behavior.
 If limits prevent completion, report the audit as partial.

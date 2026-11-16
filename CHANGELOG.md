@@ -7,6 +7,8 @@
 - Working files, such as studies and research notes, are valid under any name and are not authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
 - Add the Same-Change Update principle: a behavior change updates its owning definition, its tests, and derived outputs such as manuals and skills in the same change. Derived outputs are not authority.
 - Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and framework changes cite adopter evidence.
+- The adopted-scope table becomes an optional scope map. A scope is adopted when it has a definition; the definition marks the boundary. When a map is kept, it is the only document index. Existing adopted-scope tables remain valid as scope maps.
+- Every Definition Audit states its window: start and end revisions. The start is the end of the previous audit of the same scope, when known. A last-run record is optional; the recommended place is the audit PR title, such as `Definition audit: <scope> through <revision>`. A file-based record remains valid and is not authority.
 - Existing adopters need no action for this part. No file is renamed or removed.
 - Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
 

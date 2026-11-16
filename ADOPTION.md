@@ -14,7 +14,7 @@ Do not rename docs paths, rewrite definitions, or delete useful docs just to ado
 Existing repositories may retain explicit policies for working artifacts.
 Existing naming, directory structure, and useful navigation remain valid. Do not delete an existing index solely to adopt 1.4.
 For new navigation, agents must not create or expand a manual inventory of every Markdown file unless requested by the user or required by explicit local policy.
-Adopted-scope tables and focused entry points remain valid. Audits are opt-in and do not add a default CI gate or require report files.
+Adopted-scope tables remain valid as optional scope maps. Focused entry points remain valid. Audits are opt-in and do not add a default CI gate or require report files.
 Separate `README.md` and `AGENTS.md` files remain valid. Converting `AGENTS.md` to a symlink is optional.
 Existing adopters need no action for 1.4.1. The entry-file rules apply to new and changed entry content. Entry content written before 1.4.1, including a separate `AGENTS.md` that repeats `README.md`, remains valid until it changes.
 When a definition changes and the entry file restates it, replace the restatement with a link instead of editing both. A full cleanup is optional; see [Shrink An Existing Entry File](#shrink-an-existing-entry-file).
@@ -24,7 +24,7 @@ When a definition changes and the entry file restates it, replace the restatemen
 | Mode | Use when | Required setup |
 | --- | --- | --- |
 | Full repository | The repo is new or already uses structured behavior docs. | Stable docs, an entry file (routing-only for new repositories), validation commands, and PR docs/validation reporting. |
-| Scoped | The repo has existing code, docs, and practices. Recommended for legacy repos. | Keep its docs path. List adopted scopes in local documentation rules. Add definitions and validation for those scopes. |
+| Scoped | The repo has existing code, docs, and practices. Recommended for legacy repos. | Keep its docs path. Add definitions and validation for the adopted scopes. A scope with a definition is adopted; a scope map is optional. |
 
 Complete documentation coverage is not required for scoped adoption.
 Definitions describe implemented behavior. A repository without code completes adoption without a definition. Write the first definition from the first implemented behavior.
@@ -53,9 +53,9 @@ Definition Harness does not replace engineering controls. Connect the adopted sc
 
 Copy only the files you need. Adapt paths and validation commands to the target repository before use.
 The local documentation rules template serves both modes; its filename is kept for compatibility. It links to this repository's `documentation/documentation-definition.md` for the full rules instead of copying them.
-In full-repository adoption, the adopted-scope table lists every scope that has a definition. It may start empty.
+A [scope map](documentation/documentation-definition.md#scope-map) is optional in both modes. When a repository keeps one, it lists every scope that has a definition and may start empty.
 Copied docs link to harness documents that are not starter files, such as `definition-audit-definition.md` and `code-structure-principles.md`. Point those links at a pinned harness URL, or remove them. Copy `code-structure-principles.md` or `programming-principles.md` only when the repository adopts those rules.
-A manual adoption copies these files, records repository-wide validation commands once in the entry file, names per-scope checks in the adopted-scope table, writes a definition from implemented behavior for a high-risk or high-change scope when such behavior exists, and requires PRs to report validation, risks, and documentation impact.
+A manual adoption copies these files, records repository-wide validation commands once in the entry file, names per-scope checks in each definition or in the optional scope map, writes a definition from implemented behavior for a high-risk or high-change scope when such behavior exists, and requires PRs to report validation, risks, and documentation impact.
 
 ### Scoped Adoption Examples
 
@@ -90,7 +90,7 @@ One existing scope:
 ```text
 Use Definition Harness from <repo URL> to adopt only <scope name> in this existing repository.
 First inspect the current docs, code, tests, entry files (README.md, AGENTS.md), and PR template. Do not reorganize unrelated docs.
-Add <scope name> to the adopted-scope table in the local documentation rules, create or update its current-state definition, and identify the tests or validation commands that protect it. Make the smallest routing updates needed so future PRs keep that scope's docs, code, and tests aligned.
+Create or update the current-state definition for <scope name>, add a row to the scope map if the repository keeps one, and identify the tests or validation commands that protect it. Make the smallest routing updates needed so future PRs keep that scope's docs, code, and tests aligned.
 ```
 
 Repository that adopted an earlier version:
@@ -188,17 +188,17 @@ Apply the steps to `README.md` and to a separate `AGENTS.md`. Content that exist
 1. Review the entry file section by section. For each section, find the document that owns the content.
 2. If a definition or another stable document owns the content, confirm that the owner contains every fact. Move missing facts to the owner. If the two copies conflict, report the conflict and ask which is correct. Then delete the section from the entry file.
 3. If no document owns the content, move it to its owner first, then delete it. Behavior goes to a definition. Code structure, test coverage, and generated file names may stay in code and tests.
-4. Replace definition lists with one link to the local documentation definition or its adopted-scope table.
+4. Replace definition lists with one link to the scope map, the local documentation definition, or the docs directory.
 5. Keep one language, the documentation language. Delete a translated copy after its facts are covered. If the entry files and definitions use different languages, ask the user which language is the documentation language.
 6. Keep each always-visible constraint as one sentence and a link.
-7. Check for orphans. Each document that the removed text linked must still be reachable from its owner, the adopted-scope table, or another stable document. Add the missing link to the owner.
+7. Check for orphans. Each document that the removed text linked must still be reachable from its owner, the scope map, or another stable document. Add the missing link to the owner.
 8. Record deleted and moved sections, with their new owners, in the PR.
 
 ## PR Closure
 
 - Confirm docs, code, and tests agree for adopted scopes.
 - Record validation commands, results, and required evidence.
-- Update the entry file only when how to run, development commands, the reading route, or validation commands change. A new scope updates the adopted-scope table.
+- Update the entry file only when how to run, development commands, the reading route, or validation commands change. A new scope adds a scope map row when a map exists.
 - Update architecture only for changes within its scope.
 - Resolve any working docs or mark them historical.
 

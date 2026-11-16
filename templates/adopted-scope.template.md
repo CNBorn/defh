@@ -20,7 +20,7 @@ Make `<scope>` easier for humans and agents to change by giving it durable behav
 3. Create or update `<docs path>/<scope>-definition.md` for current behavior.
 4. Create or update `<docs path>/<scope>-principles.md` only if stable rationale needs to guide future changes.
 5. Create or update `<docs path>/<scope>-evaluation-definition.md` only if stable scenario, visual, workload, rubric, or operational evidence needs to be defined.
-6. Add `<scope>` to the adopted-scope table in the repo-local documentation rules. This table is the document index.
+6. If the repository keeps a scope map, add a `<scope>` row. The map is the document index. Without a map, the definition itself marks the scope as adopted.
 7. Add or update tests for the observable claims in the definition.
 8. Do not add `<scope>` to the entry file. Update the entry file only if how to run, development commands, the reading route, or validation commands changed.
 9. If the entry file restates `<scope>` behavior, move any missing facts into the definition, then replace the restatement with a link.
@@ -28,7 +28,7 @@ Make `<scope>` easier for humans and agents to change by giving it durable behav
 
 For new documentation, use a domain prefix and optional topic prefix in a flat directory when useful.
 Keep existing filenames and navigation. Do not create or expand a manual inventory of every Markdown file unless the user requests it or explicit local policy requires it.
-The adopted-scope list records authority and validation boundaries; it is not a full document inventory.
+A scope map, when kept, records authority and validation for each scope; it is not a full document inventory.
 
 ## Definition Requirements
 

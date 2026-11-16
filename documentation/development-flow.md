@@ -14,7 +14,7 @@ Before coding:
 
 1. Plan concrete steps in the task or external harness.
 2. Implement behavior and update tests in the same change.
-3. Update the definitions that own the changed behavior, including user and operator workflows. Add a new adopted scope to the adopted-scope table.
+3. Update the definitions that own the changed behavior, including user and operator workflows. A new adopted scope adds a row to the scope map when the repository keeps one.
 4. Update the entry file only when how to run, development commands, the reading route, or validation commands change. See [Entry File](documentation-definition.md#entry-file).
 5. Run repository validation and record commands and results in the PR.
 

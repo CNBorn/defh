@@ -16,7 +16,7 @@ It applies [Definition Harness <version>](<pinned harness URL>/ADOPTION.md). The
 - `AGENTS.md` is <a relative symlink to `README.md` | a pointer file that names `README.md` | a separate agent entry that does not repeat `README.md`>.
 - The entry file only routes. It links to owning definitions and does not restate their steps, parameters, defaults, limits, or constraints.
 - Each always-visible constraint is one sentence and a link to its owner.
-- The adopted-scope table in this document is the only document index. The entry file links here and does not list definitions.
+- <Keep or remove:> The scope map in this document is the only document index. The entry file links here and does not list definitions. A scope with a definition is adopted whether or not the map lists it.
 - Content without an owner, such as code structure or test coverage lists, goes to its owner or stays in code and tests, not in the entry file.
 - The entry file uses the documentation language. Do not keep translated copies of entry or definition content.
 
@@ -40,7 +40,7 @@ Stable docs are allowed to be partial. They are authoritative only for their sta
 - A shared prefix aids discovery; it does not establish authority. Link applicable system definitions, principles, and cross-domain constraints explicitly.
 - Create domain definitions only for actual baseline rules. Topics may stand alone; principles may be shared.
 - Unless requested by the user or required by explicit repo-local policy, agents must not create or expand a manual inventory of every Markdown file, including exhaustive lists or tables inside other docs.
-- Use focused entry points and related-document links. Adopted-scope tables describe authority and validation boundaries, not a complete file inventory.
+- Use focused entry points and related-document links. A scope map describes authority and validation for each scope, not a complete file inventory.
 - Generated inventories and one-time discovery output are permitted. Do not copy generated listings into stable docs for manual upkeep.
 - An opted-in inventory is navigation, not behavior authority.
 
@@ -66,10 +66,10 @@ Temporary docs may support work, but they must not become long-term behavior aut
 
 Delegation, task duration, multiple iterations, or crossing sessions does not itself require repository progress files. Execution state may stay in the external harness or session. When repository tracking is opted in, `IN_PROGRESS.md` may index a detailed `*-progress.md` artifact. Existing tracking conventions remain valid.
 
-## Adopted Scopes
+## Scope Map
 
-List each scope that has adopted Definition Harness rules. This table is the only document index.
-In full-repository adoption, list every scope that has a definition. The table may start empty until the first behavior is implemented.
+Optional. Delete this section if the docs directory and links are enough. A scope with a definition is adopted whether or not it appears here.
+When kept, this table is the only document index. List every scope that has a definition. The table may start empty until the first behavior is implemented.
 
 | Scope | Stable docs | Validation expectations | Notes |
 | --- | --- | --- | --- |
@@ -110,7 +110,7 @@ Do not add routine implementation detail, file inventories, or low-level step-by
 ## Entry File Update Rule
 
 - Behavior or operation changes update only the definition that owns them.
-- A new adopted scope updates only the adopted-scope table.
+- A new adopted scope adds its first definition, and a scope map row when the map is kept.
 - Update the entry file only when how to run, development commands, the reading route, or validation commands change.
 
 ## Pre-Merge Checklist
