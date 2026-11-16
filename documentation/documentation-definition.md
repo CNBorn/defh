@@ -13,13 +13,22 @@ Keep an adopting repository's existing docs path. Record it in the entry file an
 
 ## Document Types
 
-| Type | File | Purpose |
+Two kinds of document are authority. [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority) gives the test and the rationale.
+
+| Kind | File | Holds |
 | --- | --- | --- |
-| Definition | `<scope>-definition.md` | Current behavior, constraints, terms, and observable outcomes. Authoritative for its scope. |
-| Principle | `<scope>-principles.md` | Stable rationale and decision rules. Guides definitions without replacing them. |
-| Evaluation definition | `<scope>-evaluation-definition.md` | Reusable checks, scenarios, rubrics, and required evidence. Complements behavior definitions. |
-| Architecture reference | `architecture.md` | Boundaries, ownership, dependency direction, and lifecycle invariants. |
-| Process document | `development-flow.md` | Planning, implementation, validation, and closure rules. |
+| Definition | `<scope>-definition.md` | Statements that code, tests, or another observable check can prove: current behavior, constraints, terms, outcomes, boundaries, and pass conditions. |
+| Principles | `<scope>-principles.md` | Statements that need judgment: intent, rationale, tradeoffs, and decision rules. Guide definitions without replacing them. |
+
+Other files are not authority. Working files, such as studies and plans, need no type.
+
+Architecture, evaluation, and process are topics, not kinds. These files remain valid, and their statements are definitions or principles by the same test:
+
+| Topic file | Covers |
+| --- | --- |
+| `<scope>-evaluation-definition.md` | Reusable checks, scenarios, and required evidence (definition). Rubrics (principles). |
+| `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
+| `development-flow.md` | Required end state of a change (definition). Working preferences (principles). |
 
 ### Definition Levels
 
@@ -176,7 +185,8 @@ Planning and execution state may stay in the task, session, or external harness.
 | `*-progress.md` | Checkpoints, blockers, validation logs, and handoff state. |
 | `IN_PROGRESS.md` | Active state or an index to a progress file. |
 
-Working docs are not long-term behavior authority.
+The names above are examples. Other working files, such as studies or research notes, are also valid.
+Working docs are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
 When opted in, progress files must contain enough current state to resume without chat history.
 Before closure, move lasting behavior, rationale, and evaluation rules into the stable docs or runbooks that own them.
 Keep one-time decisions in PR history. Delete working files unless they are intentionally retained as history.

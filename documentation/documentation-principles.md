@@ -2,6 +2,52 @@
 
 This document captures the guiding principles for documentation under `documentation/`.
 
+## Two Kinds Of Authority
+
+Repository knowledge has two kinds of authority: definitions and principles. Audit is the one action that checks them.
+
+Two separate questions sort every statement:
+
+1. Is it authority? A statement is authority when it lives in a definition or principles file. The author decides this by where the statement is written, not by its content.
+2. Which kind? A statement is a definition when an observable check can prove it. A statement is a principle when it needs judgment.
+
+| Statement | Home | Audit result |
+| --- | --- | --- |
+| Authority that an observable check can prove | Definition | Supported, conflict, insufficient evidence, or unclear |
+| Authority that needs judgment: intent, rationale, tradeoffs, preferences | Principles | Followed or violated, with the reasoning |
+| Not authority | Any other file | Not a basis for findings. Read it as background, evidence, or history. |
+
+An observable check is code, a test, a measurement, or a person's observation against a stated pass condition. A check need not be automated. Manual acceptance items, such as feel or sound with a stated condition, are definitions.
+
+### Topics Are Not Kinds
+
+- Classify by statement, not by topic. Architecture, evaluation, process, and reusable procedures are topics. Each splits into definition statements and principle statements.
+  - Architecture: "the domain layer does not import orchestration" is a definition. "Keep the domain layer testable" is a principle.
+  - Evaluation: "p95 latency stays under 200 ms on workload W" is a definition. A rubric for copy quality is a principle.
+  - Process: "every PR records its validation commands" is a definition. "Work in small slices" is a principle.
+  - Procedure: "use a single homography only with at least 10 markers" is a definition of that workflow. A reusable procedure that later work must follow is a definition, not a working file.
+- Files organized by topic, such as `architecture.md` or an evaluation definition, remain valid.
+- A definition may keep short rationale next to the value it explains, such as a scene parameter and the reason for it. Rationale that governs more than one scope belongs in principles.
+- When one sentence mixes both kinds, split it. For example, "measure against the baseline" is a definition; "explain the value gained when over the baseline" is a principle.
+
+### Working Files
+
+- Studies, research notes, plans, analyses, and other working files are valid. They need no particular name, path, or retention rule. They are not authority.
+- A conclusion is lasting when a later change must respect it. Move a lasting conclusion that describes the system now to a definition. Move a lasting decision rule to principles. The working file may then stay as history or evidence.
+- An authority file may cite a working file as evidence. It must not depend on the working file for the rule itself. When a definition cites a working file as the reason for a limit or contract, state the limit or contract in the definition.
+- An audit reports authority that exists only in a working file.
+
+Fewer kinds lower the cost of every write and every read. A writer asks two short questions instead of choosing among document types. A reader knows that authority lives in two places.
+
+## Same-Change Update
+
+A change to behavior updates, in the same change, the definition that owns the behavior and the tests that check it.
+
+- Audit finds drift after it happens. This principle keeps drift from accumulating between audits. Repeated catch-up changes after audits are a sign that it is not followed.
+- It states the required end state of a change, not the steps to reach it.
+- A change with no effect on owned behavior, such as a refactor or a presentation change that no definition describes, updates nothing.
+- A change that adds a lasting decision rule updates principles in the same way.
+
 ## Three-Pillar Independence
 
 Documentation, code, and tests are independent pillars that check each other.
