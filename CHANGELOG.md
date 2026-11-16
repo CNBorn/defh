@@ -2,7 +2,7 @@
 
 ## Unreleased
 
-- 2.0 draft, first part: two kinds of authority. A statement is authority when it lives in a definition or principles file. Definitions hold statements that an observable check can prove, manual checks with a stated pass condition included. Principles hold statements that need judgment. Other files are not authority. Audit is the one action that checks them.
+- 2.0 draft, first part: two kinds of authority. A statement is authority when it lives in a definition or principles file. Definitions hold statements that an observable check can prove, manual checks with a stated pass condition included. Principles hold statements that need judgment. Topic files that local documentation rules name as governing, such as runbooks and `architecture.md`, stay authority. Other files are not authority. Audit is the one action that checks them.
 - Architecture, evaluation, process, and reusable procedures are topics, not document kinds. A definition may keep rationale that governs only its own scope. Their existing files remain valid; each statement is a definition or a principle by the same test.
 - Working files, such as studies and research notes, are valid under any name and are not authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
 - Add the Same-Change Update principle: a behavior change updates its owning definition, its tests, and derived outputs such as manuals and skills in the same change. Derived outputs are not authority.

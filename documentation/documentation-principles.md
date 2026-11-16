@@ -8,14 +8,14 @@ Repository knowledge has two kinds of authority: definitions and principles. Aud
 
 Two separate questions sort every statement:
 
-1. Is it authority? A statement is authority when it lives in a definition or principles file. The author decides this by where the statement is written, not by its content.
+1. Is it authority? A statement is authority when it lives in a definition or principles file, or in another file that the local documentation rules name as governing, such as a runbook or `architecture.md`. The author decides this by where the statement is written, not by its content.
 2. Which kind? A statement is a definition when an observable check can prove it. A statement is a principle when it needs judgment.
 
 | Statement | Home | Audit result |
 | --- | --- | --- |
 | Authority that an observable check can prove | Definition | Supported, conflict, insufficient evidence, or unclear |
 | Authority that needs judgment: intent, rationale, tradeoffs, preferences | Principles | Followed or violated, with the reasoning |
-| Not authority | Any other file | Not a basis for findings. Read it as background, evidence, or history. |
+| Not authority | Any file that is not a definition, principles, or a named governing file | Not a basis for findings. Read it as background, evidence, or history. |
 
 An observable check is code, a test, a measurement, or a person's observation against a stated pass condition. A check need not be automated. Manual acceptance items, such as feel or sound with a stated condition, are definitions.
 
@@ -26,7 +26,7 @@ An observable check is code, a test, a measurement, or a person's observation ag
   - Evaluation: "p95 latency stays under 200 ms on workload W" is a definition. A rubric for copy quality is a principle.
   - Process: "every PR records its validation commands" is a definition. "Work in small slices" is a principle.
   - Procedure: "use a single homography only with at least 10 markers" is a definition of that workflow when later work must follow it. A reusable procedure that later work may use or skip is a working file.
-- Files organized by topic, such as `architecture.md` or an evaluation definition, remain valid.
+- Files organized by topic, such as `architecture.md`, an evaluation definition, or a runbook, remain valid and remain authority when the local documentation rules name them as governing. Their statements sort into the two kinds by the same test.
 - A definition may keep rationale that governs only its own scope, next to the values it explains, so that later tuning does not reverse a decision by accident. Rationale that governs more than one scope belongs in principles.
 - When one sentence mixes both kinds, split it. For example, "measure against the baseline" is a definition; "explain the value gained when over the baseline" is a principle.
 

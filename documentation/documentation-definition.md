@@ -20,7 +20,7 @@ Two kinds of document are authority. [Two Kinds Of Authority](documentation-prin
 | Definition | `<scope>-definition.md` | Statements that code, tests, or another observable check can prove: current behavior, constraints, terms, outcomes, boundaries, and pass conditions. |
 | Principles | `<scope>-principles.md` | Statements that need judgment: intent, rationale, tradeoffs, and decision rules. Guide definitions without replacing them. |
 
-Other files are not authority. Working files, such as studies and plans, need no type.
+Topic files that the local documentation rules name as governing, such as runbooks, are also authority. Other files are not authority. Working files, such as studies and plans, need no type.
 
 Architecture, evaluation, and process are topics, not kinds. These files remain valid, and their statements are definitions or principles by the same test:
 
@@ -29,6 +29,7 @@ Architecture, evaluation, and process are topics, not kinds. These files remain 
 | `<scope>-evaluation-definition.md` | Reusable checks, scenarios, and required evidence (definition). Rubrics (principles). |
 | `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
 | `development-flow.md` | Required end state of a change (definition). Working preferences (principles). |
+| Runbooks | Operational and incident procedures that operators must follow (definition). Operational judgment calls (principles). |
 
 ### Definition Levels
 
