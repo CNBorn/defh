@@ -1,4 +1,6 @@
-# Definition Harness
+# defh
+
+Short for Definition Harness. Pronounced "def-H".
 
 Two kinds of document, definitions and principles, and one action, audit, that keep software behavior, intent, and tests aligned. No required process. Why it is this small, and how Lisp inspired it: [Short Version](POSITIONING.md#short-version). The current version is in `VERSION`.
 
@@ -10,7 +12,7 @@ It only routes. Rules live in `ADOPTION.md` and `documentation/`; this file does
 Point your coding agent at this repository URL. A local checkout is not required.
 
 ```text
-Use Definition Harness from <repo URL>. Read its README and ADOPTION.md. If this repository already adopted an earlier version, follow the earlier-version prompt in ADOPTION.md. Otherwise follow the prompt for your case.
+Use defh from <repo URL>. Read its README and ADOPTION.md. If this repository already adopted an earlier version, follow the earlier-version prompt in ADOPTION.md. Otherwise follow the prompt for your case.
 ```
 
 Prompts for a new repository, an existing repository, one scope, and an earlier-version adopter are in [Adoption Prompts](ADOPTION.md#adoption-prompts).

@@ -115,7 +115,7 @@ The repository knowledge layer captures final behavior, stable rationale, and re
 - Implementation plans, attempt logs, progress, and handoff notes are transient execution state.
 - External harnesses or sessions may manage that state without creating repository files.
 - Create temporary working documents only when requested by the user or required by explicit repo-local policy.
-- Existing repositories may retain their opted-in tracking conventions; adopting the harness does not require them to add or remove working artifacts.
+- Existing repositories may retain their opted-in tracking conventions; adopting defh does not require them to add or remove working artifacts.
 
 ## Testable Precision
 

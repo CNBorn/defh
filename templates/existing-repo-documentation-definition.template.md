@@ -1,7 +1,7 @@
 # Documentation Definition
 
 This document records the local documentation choices for this repository.
-It applies Definition Harness at <commit or version>, pinned at `<pinned harness URL>`. The rules are in the pinned [documentation definition](<pinned harness URL>/documentation/documentation-definition.md) and [documentation principles](<pinned harness URL>/documentation/documentation-principles.md). This document does not copy them; it records only the choices below.
+It applies defh at <commit or version>, pinned at `<pinned defh URL>`. The rules are in the pinned [documentation definition](<pinned defh URL>/documentation/documentation-definition.md) and [documentation principles](<pinned defh URL>/documentation/documentation-principles.md). This document does not copy them; it records only the choices below.
 
 ## Paths And Entry
 
@@ -42,4 +42,4 @@ When kept, this table is the only document index. A new scope adds a row in the 
 
 ## Audit
 
-Definition Audit follows the pinned [audit contract](<pinned harness URL>/documentation/definition-audit-definition.md). <Add local choices only, such as where the last-run record lives, or delete this section.>
+Definition Audit follows the pinned [audit contract](<pinned defh URL>/documentation/definition-audit-definition.md). <Add local choices only, such as where the last-run record lives, or delete this section.>

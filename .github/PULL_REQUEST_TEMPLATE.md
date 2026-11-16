@@ -16,6 +16,6 @@ Explain what documentation changed, or state why no documentation changes were n
 
 ### Compatibility
 
-If this changes harness rules or templates, explain whether existing adopted repositories need to migrate.
+If this changes defh rules or templates, explain whether existing adopted repositories need to migrate.
 
 ## Risks

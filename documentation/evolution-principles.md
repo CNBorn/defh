@@ -1,10 +1,10 @@
 # Evolution Principles
 
-This document defines stable principles for evolving Definition Harness itself.
+This document defines stable principles for evolving defh itself.
 
 ## Intent
 
-Definition Harness should improve by learning from adopted repositories, without forcing churn on them.
+defh should improve by learning from adopted repositories, without forcing churn on them.
 
 The framework may become clearer, stricter, or better documented over time, but compatibility should be an explicit design concern for every version change.
 
@@ -54,7 +54,7 @@ The change should not make any valid prior adoption shape invalid unless the rel
 
 ## Principle 7: Keep Meta-Rules In The Repository
 
-Important rules for evolving the harness belong in repository files, not only in prompts or discussion history.
+Important rules for evolving defh belong in repository files, not only in prompts or discussion history.
 
 Use:
 

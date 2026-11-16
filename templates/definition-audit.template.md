@@ -1,7 +1,7 @@
 # Definition Audit For <Scope>
 
 Use this task for an on-demand audit. Adapt paths and limits to the target repository.
-Read Definition Harness's `documentation/definition-audit-definition.md`, or the adapted local contract, before starting.
+Read defh's `documentation/definition-audit-definition.md`, or the adapted local contract, before starting.
 
 ## Request
 

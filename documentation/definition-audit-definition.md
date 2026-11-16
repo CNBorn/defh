@@ -113,5 +113,5 @@ A last-run record lets the next audit of the same scope find its start revision.
 ## Boundaries
 
 - Agents, people, or external tools may perform the audit. Separate agents are not required.
-- Definition Harness specifies the contract; it does not provide an audit runtime, scheduler, or command.
+- defh specifies the contract; it does not provide an audit runtime, scheduler, or command.
 - Audits complement tests, CI, and code review. They do not replace required validation.

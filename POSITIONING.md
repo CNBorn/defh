@@ -9,7 +9,7 @@ That is the whole framework. There is no required process: no lifecycle of specs
 
 It is small on purpose. Agents can already do most of the work. What runs out is attention, the reader's and the agent's. Every extra concept is something each session must load, understand, and then decide to skip. Two nouns and one verb fit in every session's context, every time.
 
-It is inspired by Lisp. The framework is written in its own two kinds of document, so the rules and the knowledge they govern have the same form, and an audit can check the framework itself. After adoption the framework dissolves into the repository: the repository's own definitions and principles become the authority and evolve with the project.
+It is inspired by Lisp, and so is its name. defh is short for Definition Harness; the `def` comes from Lisp's `defun`, `defvar`, and `defmacro`, which define things. The framework is written in its own two kinds of document, so the rules and the knowledge they govern have the same form, and an audit can check the framework itself. After adoption the framework dissolves into the repository: the repository's own definitions and principles become the authority and evolve with the project.
 
 It works for new repositories and for old ones. An existing repository starts with one scope and grows from there.
 
@@ -125,7 +125,7 @@ This framework does not replace engineering controls such as:
 
 It works with them.
 
-The repository harness helps the project preserve intent and behavior.
+defh helps the project preserve intent and behavior.
 The engineering toolchain helps prevent that behavior from degrading silently.
 
 Together, they create a more stable environment for both human and agent contribution.
