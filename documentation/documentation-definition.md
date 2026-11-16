@@ -208,4 +208,5 @@ When behavior changes, search docs by scope terminology and check the relevant d
 | New adopted scope | Its first definition, and the scope map row when a map exists |
 | How to run, development commands, reading route, or validation commands | Entry file. See [Entry File](#entry-file). |
 
+When a change is merged, the documents it touches use no stale terms, and the definitions it touches match the final implementation. This describes the end state of a change, not a required step.
 Tested and documented are different; see [Tested And Documented Are Different](documentation-principles.md#tested-and-documented-are-different).

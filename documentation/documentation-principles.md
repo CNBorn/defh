@@ -65,7 +65,7 @@ A change to behavior updates, in the same change, the definition that owns the b
 - Derived outputs, such as a user manual, its translations, generated figures, and procedure executors such as agent skills, are not authority. They follow the definition and change with it. They exist only when the scope has them.
 - Evidence artifacts, such as a formal model, are evidence, not derived outputs. The scope's definition states whether they change with the behavior.
 - Audit finds drift after it happens. This principle keeps drift in the owning definition from accumulating between audits. Small follow-up fixes after an audit, in documents that mention the behavior but do not own it, are expected; that ripple is what audits catch.
-- It states the required end state of a change, not the steps to reach it.
+- It states the required end state of a change, not the steps to reach it: at merge, the touched documents use no stale terms and the touched definitions match the final implementation.
 - A change with no effect on owned behavior, such as a refactor or a presentation change that no definition describes, updates nothing.
 - A change that adds a lasting intent or decision rule updates principles in the same way.
 
