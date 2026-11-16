@@ -23,6 +23,7 @@
 - Rewrite the POSITIONING short version as the project pitch: two kinds of document and one action, no required process, attention as the scarce resource, and the Lisp-inspired idea that the framework is written in its own terms. This repository's validation now includes a self-audit when rules or templates change.
 - Rename `documentation/harness-evolution-principles.md` to `documentation/evolution-principles.md`.
 - Rename the framework to defh, short for Definition Harness, pronounced "def-H". The `def` follows Lisp's `defun`, `defvar`, and `defmacro`. Prompts, templates, and rules use the new name. "Definition Audit", document names, and the repository URL are unchanged. Local rules and prompts that use the old name remain valid.
+- Update the helpdesk platform example to 2.0: local rules reduced to local choices and links, `architecture.md` named as a governing topic file, principles with violation conditions, definitions that record the mechanism including what the code does not do, and a scope map with a verification column.
 - Existing adopters need no action. Local copies of removed files remain valid as governing topic files or as working files. Nothing in an adopted repository is renamed or removed.
 - Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
 

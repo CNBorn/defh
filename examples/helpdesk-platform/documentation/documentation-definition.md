@@ -1,30 +1,45 @@
 # Documentation Definition
 
-This document defines the local documentation choices for the helpdesk platform.
-It applies [Definition Harness 1.4.2](https://github.com/CNBorn/definition-harness/blob/43c094ccdffa0af516a895fc18d4527786ad373e/ADOPTION.md) in full-repository mode. The full rules are in the pinned [documentation definition](https://github.com/CNBorn/definition-harness/blob/43c094ccdffa0af516a895fc18d4527786ad373e/documentation/documentation-definition.md); this document records local choices.
+This document records the local documentation choices for the helpdesk platform.
+It applies defh 2.0, pinned at `1d5f66b`. The rules are in the pinned [documentation definition](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/documentation-definition.md) and [documentation principles](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/documentation-principles.md). This document does not copy them; it records only the choices below.
 
-## Documentation Path And Entry
+## Paths And Entry
 
-- Stable documentation lives in `documentation/`. Working docs, such as progress, context, acceptance, and handoff files, are not enabled.
-- `README.md` is the only entry for humans and agents. `AGENTS.md` is a relative symlink to it.
-- The entry file only routes. It links to owning documents and does not restate them.
-- The documentation language is English.
+- Stable docs live in `documentation/`.
+- `README.md` is the entry file. It only routes.
+- `AGENTS.md` is a relative symlink to `README.md`.
+- Documentation language: English.
 
-## Adopted Scopes
+## Governing Files
 
-This table is the only document index. Full-repository adoption lists every scope that has a definition.
+Definitions (`*-definition.md`) and principles (`*-principles.md`) are authority. These topic files are also governing:
 
-| Scope | Definition | Principles | Validation |
+- [architecture.md](architecture.md): boundaries and ownership for all scopes.
+
+Other files are not authority and are not listed.
+
+## Gap Decisions
+
+A gap closes only by a code change or by a risk acceptance written in principles.
+
+- Only a person may decide gaps in: VIP escalation, and any change to how tickets reach the `security-review` queue.
+- Elsewhere, an agent may decide, with the reason recorded in the PR.
+
+## Validation
+
+| Command | What it checks |
+| --- | --- |
+| `make check` | Unit tests for routing and escalation, and lint. |
+
+## Scope Map
+
+This table is the only document index. A new scope adds a row in the same change as its first definition.
+
+| Scope | Definition | Principles | Verification |
 | --- | --- | --- | --- |
-| Ticket routing | [ticket-routing-definition.md](ticket-routing-definition.md) | [support-operations-principles.md](support-operations-principles.md) | `make check`; tests for the definition's verification notes |
-| VIP escalation | [vip-escalation-definition.md](vip-escalation-definition.md) | [support-operations-principles.md](support-operations-principles.md) | `make check`; tests for the definition's verification notes |
+| Ticket routing | [ticket-routing-definition.md](ticket-routing-definition.md) | [support-operations-principles.md](support-operations-principles.md) | `make check` |
+| VIP escalation | [vip-escalation-definition.md](vip-escalation-definition.md) | [support-operations-principles.md](support-operations-principles.md) | `make check` |
 
-[Architecture](architecture.md) defines boundaries and ownership for all scopes.
+## Audit
 
-## Update Rules
-
-- A behavior or operation change updates only the definition that owns it, with tests for its observable claims.
-- A new scope adds a row to this table. It does not change `README.md`.
-- Update `README.md` only when how to run, development commands, the reading route, or validation commands change.
-- Update `architecture.md` only when boundaries, ownership, dependency direction, or lifecycle invariants change.
-- Planning, validation, and PR closure follow the pinned [development flow](https://github.com/CNBorn/definition-harness/blob/43c094ccdffa0af516a895fc18d4527786ad373e/documentation/development-flow.md).
+Definition Audit follows the pinned [audit contract](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/definition-audit-definition.md). The last-run record goes in the audit PR title: `Definition audit: <scope> through <revision>`.
