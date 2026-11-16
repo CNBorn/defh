@@ -29,7 +29,7 @@ Agents can move quickly, but without durable in-repo guidance they drift, overfi
 
 ## The Core Idea
 
-This kit treats the repository itself as the place where durable product and engineering knowledge should live.
+defh treats the repository itself as the place where durable product and engineering knowledge should live. Definitions and principles are not disposable planning artifacts: they stay in the repository and keep shaping maintenance, refactors, tests, reviews, and future agent work.
 
 The model is two nouns and one verb:
 
@@ -55,14 +55,14 @@ That is useful, but it is not the main focus here.
 
 Those workflows ask every contributor, human or agent, to remember a process. This framework asks them to remember two nouns and one verb.
 
-This kit is centered on the lifecycle of repository knowledge:
+defh is centered on the lifecycle of repository knowledge:
 
 `intent -> behavior -> implementation -> verification -> maintenance`
 
 The difference matters.
 
 - In many spec-mode systems, the feature spec is the center.
-- In this kit, the repository's long-lived knowledge layer is the center.
+- In defh, the repository's long-lived knowledge layer is the center.
 
 That makes the framework:
 
@@ -70,20 +70,6 @@ That makes the framework:
 - more maintainable
 - more suitable for refactors and long-term operation
 - more useful for future humans and future agent runs
-
-## Why "Spec-Anchored"
-
-This framework is best described as `spec-anchored`.
-
-The definitions are not disposable planning artifacts. They remain in the repository and continue shaping:
-
-- maintenance
-- refactors
-- tests
-- reviews
-- future agent behavior
-
-The docs are part of the operating model of the repository, not just pre-coding paperwork.
 
 ## Written In Its Own Terms
 

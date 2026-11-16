@@ -6,9 +6,9 @@ This document defines how the platform escalates unresolved VIP tickets now.
 
 - Defines the escalation workflow for unresolved VIP tickets.
 
-## Inherits From
+## Related Definitions
 
-- [Ticket routing definition](ticket-routing-definition.md): eligibility uses its account inputs, and escalation never changes the queue or priority it assigned.
+- [Ticket routing definition](ticket-routing-definition.md): escalation never changes the queue or priority that routing assigned.
 
 ## Governing Principles
 
@@ -16,7 +16,7 @@ This document defines how the platform escalates unresolved VIP tickets now.
 
 ## Behavior
 
-A ticket is eligible when its account has the VIP flag or an active enterprise plan, both routing inputs, and the ticket has not reached a terminal state.
+A ticket is eligible when its account has the VIP flag in the CRM or an active enterprise plan, and the ticket has not reached a terminal state.
 
 - When an eligible ticket is unassigned for more than 10 minutes, the system pages the on-duty support lead.
 - When an eligible ticket is unresolved for more than 60 minutes, the system raises an escalation event for leadership review.

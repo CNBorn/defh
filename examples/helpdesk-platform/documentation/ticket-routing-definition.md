@@ -23,7 +23,7 @@ Every new ticket gets a priority and a queue before it becomes visible in the ag
 
 Triggers: ticket creation from API, email, or form intake. Policy configuration updates apply to tickets created after the update; routing does not re-route existing tickets.
 
-Inputs: normalized ticket category, customer plan tier, the account's VIP flag from the CRM, and severity classification. Output: a queue assignment, applied by the work management layer as a transition.
+Inputs: normalized ticket category, customer plan tier, and severity classification. Output: a queue assignment, applied by the work management layer as a transition.
 
 ## Verification
 
