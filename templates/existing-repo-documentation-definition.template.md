@@ -22,15 +22,13 @@ It applies [Definition Harness <version>](<pinned harness URL>/ADOPTION.md). The
 
 ## Stable Docs
 
-- `*-definition.md`: current behavior, constraints, contracts, and observable outcomes.
-- `*-principles.md`: stable rationale that guides future definitions and implementation decisions.
-- `*-evaluation-definition.md`: stable criteria, commands, scenarios, tools, or evidence expectations used to evaluate a behavior scope.
-- `architecture.md`: boundaries, ownership, dependency direction, and lifecycle invariants.
-- `development-flow.md`: planning, validation, documentation, and PR closure rules.
-- `agent-workflow-definition.md`: repository-side contract for delegated agent work.
-- runbooks: operational procedures and incident response instructions.
+Authority lives in definitions and principles, plus any topic files named below.
 
-Stable docs are allowed to be partial. They are authoritative only for their stated scope.
+- `*-definition.md`: current behavior, including the mechanism and what the code does not do.
+- `*-principles.md`: intent, including checkable invariants with their violation conditions, and rationale.
+- Governing topic files: <list only the topic files this repository names as governing, such as `architecture.md`, `*-evaluation-definition.md`, `development-flow.md`, or runbooks. Remove this line if there are none.>
+
+Other files are not authority and do not need to be listed. Stable docs are allowed to be partial. They are authoritative only for their stated scope.
 
 ## Naming And Navigation
 
@@ -54,13 +52,7 @@ Stable docs are allowed to be partial. They are authoritative only for their sta
 
 ## Optional Temporary Docs
 
-Default adoption captures final behavior, stable rationale, and reusable evaluation criteria in repository docs, with final validation evidence in the PR. Create the following files only when requested by the user or required by explicit repo-local policy:
-
-- `*-context.md`: feature background, requirements, options, and planning decisions.
-- `*-implementation-guide.md`: execution instructions for a specific implementation slice.
-- `*-acceptance-contract.md`: completion criteria for a specific active work item.
-- `*-progress.md`: active work tracking, handoff notes, blockers, and validation logs.
-- `IN_PROGRESS.md`: short-lived state for active multi-step work.
+Default adoption captures final behavior, stable rationale, and reusable evaluation criteria in repository docs, with final validation evidence in the PR. Working files, such as studies, plans, or progress notes, are not authority and need no list here. Create them only when requested by the user or required by explicit repo-local policy.
 
 Temporary docs may support work, but they must not become long-term behavior authority. Before closing a feature, move lasting behavior or rationale into the stable docs or runbooks that own it, or into PR history.
 

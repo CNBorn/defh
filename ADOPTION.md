@@ -35,7 +35,7 @@ Unadopted scopes keep existing practices. Prefer adoption when a scope becomes h
 Adoption is complete when the target repository states these boundaries explicitly:
 
 - where stable docs live, such as `documentation/` or an existing `docs/`
-- which docs are stable authority and which are temporary working notes
+- which topic files, besides definitions and principles, are named as governing
 - which scopes are adopted, and which keep existing practice
 - which validation commands prove changes in adopted scopes
 - which scopes need evaluation definitions for scenario, visual, workload, rubric, or operational evidence
@@ -82,7 +82,7 @@ Existing repository with partial or messy docs:
 ```text
 Use Definition Harness from <repo URL> in scoped-adoption mode.
 Do not reorganize the whole docs tree. Keep this repo's existing docs path.
-Pick one high-risk or high-change scope, add local documentation rules that separate stable and temporary docs, create or update one behavior definition for that scope, and update tests and validation expectations around its observable claims.
+Pick one high-risk or high-change scope, add local documentation rules that name any governing topic files, create or update one behavior definition for that scope, and update tests and validation expectations around its observable claims.
 ```
 
 One existing scope:

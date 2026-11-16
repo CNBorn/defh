@@ -19,7 +19,7 @@ The framework may become clearer, stricter, or better documented over time, but 
 
 - The framework evolves mainly from practices that worked in adopted repositories, and from failures observed there.
 - An adopter that evolved well is the framework's implemented behavior. Audit a framework draft against that adopter before release.
-- A PR that adds or removes a framework rule cites the adopter evidence: repository, PR or commit, and the observed result.
+- A PR that adds or removes a framework rule explains the rule on its own merits. It may cite adopter evidence when that evidence can be shared publicly.
 - Keep project-specific practice in the adopter. Generalize only the part that does not depend on the project's domain.
 
 ## Principle 3: Preserve Adopted Repository Compatibility

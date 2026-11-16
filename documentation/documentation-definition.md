@@ -17,8 +17,8 @@ Two kinds of document are authority. [Two Kinds Of Authority](documentation-prin
 
 | Kind | File | Holds |
 | --- | --- | --- |
-| Definition | `<scope>-definition.md` | Statements that code, tests, or another observable check can prove: current behavior, constraints, terms, outcomes, boundaries, and pass conditions. |
-| Principles | `<scope>-principles.md` | Statements that need judgment: intent, rationale, tradeoffs, and decision rules. Guide definitions without replacing them. |
+| Definition | `<scope>-definition.md` | Current behavior: the mechanism, including what the code does not do, constraints, terms, outcomes, boundaries, and existing checks. Every statement is checkable. |
+| Principles | `<scope>-principles.md` | Intent: goals, invariants, rationale, tradeoffs, and decision rules. A principle may be checkable and should state its violation condition when one can be stated. Guides definitions without replacing them. |
 
 Topic files that the local documentation rules name as governing, such as runbooks, are also authority. Other files are not authority. Working files, such as studies and plans, need no type.
 
@@ -26,7 +26,7 @@ Architecture, evaluation, and process are topics, not kinds. These files remain 
 
 | Topic file | Covers |
 | --- | --- |
-| `<scope>-evaluation-definition.md` | Reusable checks, scenarios, and required evidence (definition). Rubrics (principles). |
+| `<scope>-evaluation-definition.md` | Existing checks, scenarios, and the evidence a release requires (definition). Invariants that no check covers yet, and rubrics (principles). Work to build a missing check belongs in a working file. |
 | `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
 | `development-flow.md` | Required end state of a change (definition). Working preferences (principles). |
 | Runbooks | Operational and incident procedures that operators must follow (definition). Operational judgment calls (principles). |
