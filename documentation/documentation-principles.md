@@ -26,6 +26,8 @@ Two separate questions sort every statement:
 
 A gap exists when current behavior does not guarantee a principle. The gap itself is not written into any authority file. It is an audit finding.
 
+A fact and a gap differ in what they name. "The spend step takes no lock" is a fact about the code; it belongs in the definition. "Admission is not yet guaranteed under concurrent callers" names a principle the facts fail to meet; it is a gap. A definition section that tracks unmet intent, or progress toward it, holds gaps; move its facts to the definition body and report the rest.
+
 - A definition records the mechanism as it is, including what the code does not do, such as no lock, no recheck, or no unique index. These are facts about current behavior.
 - A gap finding depends on two inputs: a principle that states its violation condition, and a definition that records the mechanism faithfully. When either is missing, the gap cannot be found.
 - Report a gap when it is found, during an audit or any other change. Do not wait for the next audit.
@@ -86,7 +88,7 @@ Definitions describe the system as it exists now, not as it used to be or might 
 
 - Write in present tense.
 - Remove or rewrite stale statements when behavior changes.
-- Keep migration notes, tradeoffs, and historical context in PR descriptions or design history, not in active definitions.
+- Keep migration notes, one-time tradeoffs, and historical context in PR descriptions or design history, not in active definitions. Rationale that still governs a scope's values may stay in its definition; see [Topics Are Not Kinds](#topics-are-not-kinds).
 
 ## Implementation Decoupling
 
@@ -155,7 +157,7 @@ Agent tools load the agent entry file in every session. Every line in it costs c
 This supports the "map, not manual" position in `POSITIONING.md`.
 
 - Ownership comes before file roles. When a definition owns a user operation, the operation is behavior. The entry file links to it, so a feature change updates only the definition.
-- "README covers user workflows" applies only to workflows that no definition owns, such as installation and commands. Applying it to owned workflows makes the entry file grow with every feature.
+- The entry file describes a workflow directly only when no definition owns it, such as installation and commands. Describing owned workflows makes the entry file grow with every feature.
 - Entry duties are roles, not files. One file can carry the human and agent roles. A symlink keeps the `AGENTS.md` path that agent tools expect.
 - `README.md` holds the content because repository hosts and package registries render it. Agent tools read local files and follow symlinks.
 - One index and one language keep one copy. A second definition list or a translated entry file is a third copy.

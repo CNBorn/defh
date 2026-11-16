@@ -7,7 +7,7 @@ This document defines document types, writing rules, and update rules for `docum
 - `documentation/` holds the framework's definitions and principles: this document, the documentation principles, the audit contract, and the evolution principles.
 - `README.md` is the entry file. It covers how to run, development commands, the reading route, and validation commands.
 - `AGENTS.md` is the agent entry. It may be a symlink to `README.md`. See [Entry File](#entry-file).
-- `ADOPTION.md` defines adoption, starter files, and compatibility.
+- `ADOPTION.md` is a governing topic file for this repository. It owns adoption steps, starter files, prompts, and compatibility notes.
 
 Keep an adopting repository's existing docs path. Record it in the entry file and the local documentation definition.
 
@@ -28,14 +28,15 @@ Architecture, evaluation, and process are topics, not kinds. These files remain 
 | --- | --- |
 | `<scope>-evaluation-definition.md` | Existing checks, scenarios, and the evidence a release requires (definition). Invariants that no check covers yet, and rubrics (principles). Work to build a missing check belongs in a working file. |
 | `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
-| `development-flow.md` | Required end state of a change (definition). Working preferences (principles). |
+| Process file, such as a development flow | Required end state of a change (definition). Working preferences (principles). |
 | Runbooks | Operational and incident procedures that operators must follow (definition). Operational judgment calls (principles). |
 
 ### Definition Levels
 
-- A system definition sets baseline rules for a domain, such as authentication, billing, or job orchestration.
-- An item/workflow definition applies those rules to a specific flow, policy, command, or interface.
-- An item/workflow must obey its system definition. Update the system rules before introducing a conflicting behavior.
+- A domain definition sets baseline rules for a domain, such as authentication or job orchestration.
+- A topic definition applies those rules to a specific flow, policy, command, or interface.
+- A topic definition must obey the domain definition it inherits from. Update the domain rules before introducing a conflicting behavior.
+- Existing files that use the older terms "system definition" and "item definition" remain valid.
 
 Definitions may reference shared principles and adjacent definitions. A scope does not need its own principles file.
 `documentation-principles.md` governs authoring. Principles for an adopter's own code, such as those in `examples/principles/`, belong to that adopter.
@@ -55,8 +56,8 @@ Multiword domains and topics do not add semantic levels. Document-type suffixes,
 
 - Use stable domain terms. Do not encode source layout, numeric ordering, or a deeper category chain in filenames.
 - A shared prefix groups documents for discovery. It does not establish authority or inheritance.
-- State applicable system definitions under `Inherits From` or an equivalent explicit link. Name related principles and cross-domain constraints in the document.
-- Each stated inheritance relationship applies the system rules to the item's scope. Related links alone do not imply inheritance.
+- State applicable domain definitions under `Inherits From` or an equivalent explicit link. Name related principles and cross-domain constraints in the document.
+- Each stated inheritance relationship applies the domain rules to the topic's scope. Related links alone do not imply inheritance.
 - Create a domain definition only when it has baseline rules to own. A topic may stand alone.
 - Shared principles may govern several definitions. A topic does not need its own principles file.
 - Apply consistent terms in the document's language. Existing naming conventions do not require translation.
@@ -186,7 +187,8 @@ A scope map is optional. It is a table in the local documentation definition wit
 
 ## Optional Working Docs
 
-Create working docs only when requested by the user or required by explicit repo-local policy.
+Working docs are valid whenever the work produces findings, evidence, or plans worth keeping, such as a study.
+Agents do not create progress, handoff, or tracking files by default; create those only when requested by the user or required by explicit repo-local policy.
 Delegation, duration, multiple iterations, or crossing sessions does not itself require these files.
 Planning and execution state may stay in the task, session, or external harness.
 Working docs, such as studies, plans, or progress notes, take any name and are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).

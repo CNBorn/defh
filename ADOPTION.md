@@ -7,14 +7,14 @@ After adoption, the repository's own definitions and principles are its authorit
 
 ## Compatibility
 
-Version 2.0 removes framework files and templates that earlier versions offered: development flow, agent workflow, the architecture starter, and the evaluation, acceptance, progress, and adopted-scope templates.
+The released version is in `VERSION`. The next version, 2.0, is unreleased; `CHANGELOG.md` lists it under "Unreleased". Until it is released, pin a commit.
+2.0 is a breaking release for the framework itself. It removes framework files and templates that earlier versions offered: development flow, agent workflow, the architecture starter, and the evaluation, acceptance, progress, and adopted-scope templates. The reason is that the framework keeps only definitions, principles, and audit.
 Repositories that copied those files keep them. They remain valid as topic files when local documentation rules name them as governing, or as working files otherwise. No adopter needs to delete, rename, or rewrite anything.
 Adopted-scope tables remain valid as optional scope maps. Existing paths, names, and navigation remain valid. Upgrading is optional.
 
 ## Adoption
 
-A scope is adopted when it has a definition. The definition marks the boundary; no separate list is required.
-Start with the whole repository or with one high-risk or high-change scope. Code without a definition keeps its existing practice.
+Start with the whole repository or with one high-risk or high-change scope. [Scoped Adoption](documentation/documentation-definition.md#scoped-adoption) states when a scope counts as adopted.
 
 Definitions describe implemented behavior. A repository without code completes adoption without a definition and writes the first definition from the first implemented behavior.
 
@@ -30,7 +30,7 @@ Definition Harness does not replace engineering controls. Connect definitions to
 
 | File | Source | When |
 | --- | --- | --- |
-| Entry file, with `AGENTS.md` as a symlink | `templates/entry-file.template.md` | New repository. In an existing one, add only its "Read Before Changing" section. |
+| Entry file, with `AGENTS.md` as a symlink | `templates/entry-file.template.md` | New repository. In an existing one, add its "Read Before Changing" section and choose an `AGENTS.md` layout from [Entry File](documentation/documentation-definition.md#entry-file). |
 | Local documentation rules | `templates/existing-repo-documentation-definition.template.md` | Always. It links to the pinned harness rules instead of copying them. |
 | Definition | `templates/definition.template.md` | When behavior exists. |
 | Principles | `templates/principles.template.md` | When intent must guide future changes. |
@@ -44,14 +44,14 @@ See the [helpdesk platform example](examples/helpdesk-platform/README.md) for an
 
 Point a coding agent at the Definition Harness repository URL with the prompt for your case. A local checkout is not required.
 
-New repository:
+New repository, with little or no code:
 
 ```text
 Use Definition Harness from <repo URL> for this project's documentation.
 Read its README and ADOPTION.md. Add the starter files and adapt paths and validation commands to this project's stack. If the project already has behavior, write the first definition from the code of its highest-risk scope. If it has no code yet, do not write a definition now.
 ```
 
-Existing repository:
+Existing repository, with code, with or without docs:
 
 ```text
 Use Definition Harness from <repo URL> in this existing repository.
@@ -79,10 +79,10 @@ For an on-demand audit, use `templates/definition-audit.template.md`.
 
 ## What To Capture
 
+Definitions and principles hold authority; [Two Kinds Of Authority](documentation/documentation-principles.md#two-kinds-of-authority) says which statement goes where. Outside them:
+
 | Knowledge | Home |
 | --- | --- |
-| Current behavior, including the mechanism and what the code does not do | `*-definition.md` |
-| Intent, invariants with violation conditions, rationale, and tradeoffs | `*-principles.md` |
 | How to run, development commands, the reading route, and validation commands | Entry file |
 | Final validation evidence, one-time decisions, and audit reports | The PR |
 | Studies, plans, and other working notes | Any working file. Not authority. |
@@ -100,5 +100,4 @@ Reference the pinned audit contract or adapt it; copying it is not required. Eve
 
 ## Framework Versions
 
-Non-breaking updates preserve paths, filenames, and valid adoption shapes.
-Breaking updates state the incompatibility, explain why, and change only what new adopters start from. Existing adopters stay valid and choose whether to upgrade.
+Non-breaking updates preserve the framework's paths, filenames, and valid adoption shapes. Breaking updates may remove them. [Harness evolution principles](documentation/harness-evolution-principles.md) state what every version owes adopters.

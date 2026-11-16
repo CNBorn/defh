@@ -5,10 +5,10 @@ It reports conflicts and uncertainty for a stated scope and repository state.
 
 ## Scope
 
-- Include the selected behavior definitions and their applicable system definitions, principles, evaluation definitions, and architecture constraints.
+- Include the selected behavior definitions and their applicable domain definitions, principles, evaluation definitions, and architecture constraints.
 - Include process rules, entry-file instructions, and runbooks when they govern the audited behavior or workflow.
 - When any document, including the entry file, restates content that another authority file owns, report the restatement as a documentation finding. Report it as a conflict when the two copies differ.
-- Report non-authority content inside a definition: per-run evidence, review history, test or source inventories, and last-run records written as claims. Name where it belongs, such as a working file or the PR.
+- Report non-authority content inside a definition: per-run evidence, review history, and test or source inventories written as behavior claims. Name where it belongs, such as a working file or the PR. A last-run record kept as a record, such as a ledger table or a "Reviewed against" line, is not reported.
 - The name does not exclude principles or other relevant authority. Keep each document's role distinct.
 - Default to the requested adopted scope. Audit all adopted scopes only when requested. Do not assume undocumented areas are adopted.
 - An audit may cover a rationale-only or process scope. Report which claims can be checked and which require human judgment.
@@ -70,7 +70,7 @@ Report principle results in their own section. Do not count them with claim resu
 | Violated | Evidence shows the violation condition occurring, or the observed choice contradicts the principle. |
 
 A principle without a violation condition is followed or violated, with the reasoning.
-A not-guaranteed result depends on two inputs: a principle that states its violation condition, and a definition that records the mechanism, including what the code does not do. Report when either input is missing, because the audit then cannot find the gap.
+Report when a principle lacks a violation condition or a definition does not record the mechanism, because the audit then cannot find gaps. [Intent And Gaps](documentation-principles.md#intent-and-gaps) owns the rules for gaps.
 
 ## Report Contract
 
@@ -95,8 +95,7 @@ Even a report with no conflicts must state its evidence and coverage limits; it 
 The audit reports differences. It does not authorize repairs or changes to governing rules.
 When the user also requests repairs, capture findings before making changes and verify the affected claims afterward.
 Do not rewrite definitions to match code merely to clear a finding.
-Do not clear a gap by changing the principle, removing its violation condition, or removing the claim that exposes it. A gap closes only by a code change that guarantees the principle or by a statement in principles that accepts the risk and gives the reason. Local rules name the paths where only a person may decide. An agent may add checks before that decision.
-Report a gap when it is found. Do not hold it for a later audit.
+Gaps are reported when found and close only as [Intent And Gaps](documentation-principles.md#intent-and-gaps) states.
 
 Keep the report in the session or PR by default. Create a repository report only when requested or required by explicit repo-local policy.
 Capture lasting behavior, rationale, and reusable checks in their existing authoritative documents after an agreed correction.

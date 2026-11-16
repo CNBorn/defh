@@ -32,7 +32,7 @@ The framework may become clearer, stricter, or better documented over time, but 
 
 - Prefer adding guidance, templates, and clarification over requiring migration.
 - When a new concept is introduced, explain how it relates to the previous model.
-- Migration guidance should be optional for non-breaking releases and mandatory only for explicitly breaking releases.
+- A breaking release states the incompatibility and explains why. It describes how an adopter can take the new version, but taking it stays optional; see Principle 1.
 
 ## Principle 5: Compatibility Is Tested Against Adoption Shapes
 
@@ -49,7 +49,7 @@ The change should not make any valid prior adoption shape invalid unless the rel
 - Update `VERSION` when the framework version changes.
 - Update `CHANGELOG.md` with the behavior of the version change.
 - Update `README.md` when the agent landing path changes.
-- Update `ADOPTION.md` when adoption modes, compatibility rules, or migration expectations change.
+- Update `ADOPTION.md` when adoption steps, starter files, compatibility rules, or migration expectations change.
 - PRs that change framework rules or templates should explain compatibility impact.
 
 ## Principle 7: Keep Meta-Rules In The Repository

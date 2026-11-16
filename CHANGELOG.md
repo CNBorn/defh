@@ -17,6 +17,9 @@
 - Reduce templates from twelve to five: definition (system and item merged; records what the code does not do), principles (with an optional violation condition), definition audit, entry file (absorbs the README docs section), and local documentation rules. Remove the evaluation, architecture, acceptance-contract, agent-progress, and adopted-scope templates.
 - Shorten `ADOPTION.md`: one adoption path, four starter files, the entry-file shrink as an audit finding. Remove delegated-work, working-doc, and PR-closure guidance.
 - Rewrite the POSITIONING core idea as two nouns and one verb, and replace "Why Call It A Harness" with "Written In Its Own Terms".
+- Reduce the local documentation rules template to local choices and links: paths and entry, governing files, gap decisions, validation, the optional scope map, and audit choices. It no longer copies framework rules.
+- Use "domain definition" and "topic definition" for the two definition levels. Older "system" and "item" names remain valid.
+- Clarify the difference between a fact about what the code does not do (definition) and a gap (audit finding), when working files are created, that `ADOPTION.md` is a governing topic file, and that 2.0 is breaking for the framework but asks nothing of adopters.
 - Existing adopters need no action. Local copies of removed files remain valid as governing topic files or as working files. Nothing in an adopted repository is renamed or removed.
 - Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
 
