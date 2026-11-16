@@ -1,70 +1,44 @@
 # Adoption Guide
 
-Adopt Definition Harness in a new repository or one scope of an existing repository.
-Adoption is gradual by scope. Each adopted scope follows the docs, tests, and validation rules consistently.
+Adopt Definition Harness in a new repository or in one part of an existing repository.
+
+The framework has two kinds of authority, definitions and principles, and one action, audit. See [Two Kinds Of Authority](documentation/documentation-principles.md#two-kinds-of-authority).
+After adoption, the repository's own definitions and principles are its authority. They may evolve and drift from this framework; see [harness evolution principles](documentation/harness-evolution-principles.md).
 
 ## Compatibility
 
-Version 1.4.2 writes the first definition from implemented behavior; a repository without code adopts without one. Both modes use the local documentation rules template.
-Version 1.4.1 adds [entry-file](documentation/documentation-definition.md#entry-file) rules. The entry file routes readers and links to the owning definitions, index, and constraints; it does not restate them. One `README.md` with `AGENTS.md` as a symlink is the recommended layout, not a requirement.
-Version 1.4 adds shallow naming guidance, focused navigation defaults, and an on-demand Definition Audit contract without requiring migration.
-Version 1.3's final-state capture defaults and concise writing guidance remain in effect.
-Repositories using the earlier `documentation/` model, including versions 1.1 through 1.3, keep their valid structure.
-Do not rename docs paths, rewrite definitions, or delete useful docs just to adopt newer guidance.
-Existing repositories may retain explicit policies for working artifacts.
-Existing naming, directory structure, and useful navigation remain valid. Do not delete an existing index solely to adopt 1.4.
-For new navigation, agents must not create or expand a manual inventory of every Markdown file unless requested by the user or required by explicit local policy.
-Adopted-scope tables remain valid as optional scope maps. Focused entry points remain valid. Audits are opt-in and do not add a default CI gate or require report files.
-Separate `README.md` and `AGENTS.md` files remain valid. Converting `AGENTS.md` to a symlink is optional.
-Existing adopters need no action for 1.4.1. The entry-file rules apply to new and changed entry content. Entry content written before 1.4.1, including a separate `AGENTS.md` that repeats `README.md`, remains valid until it changes.
-When a definition changes and the entry file restates it, replace the restatement with a link instead of editing both. A full cleanup is optional; see [Shrink An Existing Entry File](#shrink-an-existing-entry-file).
+Version 2.0 removes framework files and templates that earlier versions offered: development flow, agent workflow, the architecture starter, and the evaluation, acceptance, progress, and adopted-scope templates.
+Repositories that copied those files keep them. They remain valid as topic files when local documentation rules name them as governing, or as working files otherwise. No adopter needs to delete, rename, or rewrite anything.
+Adopted-scope tables remain valid as optional scope maps. Existing paths, names, and navigation remain valid. Upgrading is optional.
 
-## Adoption Modes
+## Adoption
 
-| Mode | Use when | Required setup |
-| --- | --- | --- |
-| Full repository | The repo is new or already uses structured behavior docs. | Stable docs, an entry file (routing-only for new repositories), validation commands, and PR docs/validation reporting. |
-| Scoped | The repo has existing code, docs, and practices. Recommended for legacy repos. | Keep its docs path. Add definitions and validation for the adopted scopes. A scope with a definition is adopted; a scope map is optional. |
+A scope is adopted when it has a definition. The definition marks the boundary; no separate list is required.
+Start with the whole repository or with one high-risk or high-change scope. Code without a definition keeps its existing practice.
 
-Complete documentation coverage is not required for scoped adoption.
-Definitions describe implemented behavior. A repository without code completes adoption without a definition. Write the first definition from the first implemented behavior.
-Unadopted scopes keep existing practices. Prefer adoption when a scope becomes high-risk or hard to understand.
+Definitions describe implemented behavior. A repository without code completes adoption without a definition and writes the first definition from the first implemented behavior.
 
-### Adoption Outcome
-
-Adoption is complete when the target repository states these boundaries explicitly:
+Adoption is complete when the repository states:
 
 - where stable docs live, such as `documentation/` or an existing `docs/`
 - which topic files, besides definitions and principles, are named as governing
-- which scopes are adopted, and which keep existing practice
-- which validation commands prove changes in adopted scopes
-- which scopes need evaluation definitions for scenario, visual, workload, rubric, or operational evidence
-- whether local policy enables planning, progress, acceptance, or handoff files
-- when the entry file, architecture docs, definitions, principles, and tests must be updated
+- which validation commands prove changes
 
-Definition Harness does not replace engineering controls. Connect the adopted scopes to the repository's own quality loop: typed or validated boundaries, static analysis, automated tests, CI gates, PR reporting, and reproducible workloads where behavior needs them.
+Definition Harness does not replace engineering controls. Connect definitions to the repository's own checks: typed or validated boundaries, static analysis, tests, CI, and reproducible workloads where behavior needs them.
 
 ### Starter Files
 
-| Mode | Usual additions |
-| --- | --- |
-| Full repository | Entry file from `templates/entry-file.template.md` with `AGENTS.md` as a symlink; local documentation rules from `templates/existing-repo-documentation-definition.template.md`; `development-flow.md` and `agent-workflow-definition.md` adapted from this repository's `documentation/`; `architecture.md` from `templates/architecture.template.md`; a PR template from `.github/PULL_REQUEST_TEMPLATE.md`. When behavior exists, a definition from `templates/system-definition.template.md` or `templates/item-definition.template.md` |
-| Scoped | Local documentation rules from `templates/existing-repo-documentation-definition.template.md`; one adopted-scope definition, following `templates/adopted-scope.template.md`; principles or evaluation definitions only when needed, from `templates/principles.template.md` or `templates/evaluation-definition.template.md`; the smallest entry-file or PR-template routing update |
+| File | Source | When |
+| --- | --- | --- |
+| Entry file, with `AGENTS.md` as a symlink | `templates/entry-file.template.md` | New repository. In an existing one, add only its "Read Before Changing" section. |
+| Local documentation rules | `templates/existing-repo-documentation-definition.template.md` | Always. It links to the pinned harness rules instead of copying them. |
+| Definition | `templates/definition.template.md` | When behavior exists. |
+| Principles | `templates/principles.template.md` | When intent must guide future changes. |
 
-Copy only the files you need. Adapt paths and validation commands to the target repository before use.
-The local documentation rules template serves both modes; its filename is kept for compatibility. It links to this repository's `documentation/documentation-definition.md` for the full rules instead of copying them.
-A [scope map](documentation/documentation-definition.md#scope-map) is optional in both modes. When a repository keeps one, it lists every scope that has a definition and may start empty.
-Copied docs link to harness documents that are not starter files, such as `definition-audit-definition.md` and `code-structure-principles.md`. Point those links at a pinned harness URL, or remove them. Copy `code-structure-principles.md` or `programming-principles.md` only when the repository adopts those rules.
-A manual adoption copies these files, records repository-wide validation commands once in the entry file, names per-scope checks in each definition or in the optional scope map, writes a definition from implemented behavior for a high-risk or high-change scope when such behavior exists, and requires PRs to report validation, risks, and documentation impact.
+Copy only the files you need. Adapt paths and validation commands to the target repository.
+Copied docs may link to harness documents that are not starter files, such as `definition-audit-definition.md`. Point those links at a pinned harness URL, or remove them.
 
-### Scoped Adoption Examples
-
-- A mature Django app keeps `docs/` and adopts only the homepage splash selector. That scope gets `docs/homepage-splash-definition.md` and validation expectations.
-- A game repository with many `documentation/*-definition.md` files keeps its structure and adopts only the newer writing and diagram guidance.
-- A public API is adopted before the rest of the service. Endpoint tests cover the documented response and failure behavior.
-- A performance-sensitive module starts with principles and one definition. Its PRs include query-count, benchmark, or workload evidence.
-
-See the [helpdesk platform example](examples/helpdesk-platform/README.md) for a full-repository adoption of a non-game product.
+See the [helpdesk platform example](examples/helpdesk-platform/README.md) for an adopted repository. [Example code principles](examples/principles/) show principles an adopter may write for its own code.
 
 ## Adoption Prompts
 
@@ -73,149 +47,58 @@ Point a coding agent at the Definition Harness repository URL with the prompt fo
 New repository:
 
 ```text
-Use Definition Harness from <repo URL> as the documentation and development-flow pattern for this project.
-Read its README and ADOPTION.md, then follow the full-repository adoption mode: add the starter files and adapt paths and validation commands to this project's stack. If the project already has behavior, write the first definition from the code of its highest-risk subsystem. If it has no code yet, do not write a definition now.
+Use Definition Harness from <repo URL> for this project's documentation.
+Read its README and ADOPTION.md. Add the starter files and adapt paths and validation commands to this project's stack. If the project already has behavior, write the first definition from the code of its highest-risk scope. If it has no code yet, do not write a definition now.
 ```
 
-Existing repository with partial or messy docs:
+Existing repository:
 
 ```text
-Use Definition Harness from <repo URL> in scoped-adoption mode.
-Do not reorganize the whole docs tree. Keep this repo's existing docs path.
-Pick one high-risk or high-change scope, add local documentation rules that name any governing topic files, create or update one behavior definition for that scope, and update tests and validation expectations around its observable claims.
+Use Definition Harness from <repo URL> in this existing repository.
+Do not reorganize the docs tree. Keep this repo's existing docs path.
+Pick one high-risk or high-change scope. Add local documentation rules that name any governing topic files, write or update the definition of that scope from its current behavior, and name the tests or commands that protect its claims.
 ```
 
 One existing scope:
 
 ```text
-Use Definition Harness from <repo URL> to adopt only <scope name> in this existing repository.
-First inspect the current docs, code, tests, entry files (README.md, AGENTS.md), and PR template. Do not reorganize unrelated docs.
-Create or update the current-state definition for <scope name>, add a row to the scope map if the repository keeps one, and identify the tests or validation commands that protect it. Make the smallest routing updates needed so future PRs keep that scope's docs, code, and tests aligned.
+Use Definition Harness from <repo URL> to adopt only <scope name> in this repository.
+First inspect the current docs, code, tests, and entry files. Do not reorganize unrelated docs.
+Create or update the current-state definition for <scope name>, add a row to the scope map if the repository keeps one, and identify the tests or validation commands that protect it.
 ```
 
 Repository that adopted an earlier version:
 
 ```text
-Review Definition Harness from <repo URL> and apply only compatible improvements.
-Do not rename documentation directories or rewrite existing definitions to match the new version.
-Report the compatibility impact before making changes. Report where README.md or AGENTS.md restates content that a definition owns, lists definitions, carries content without an owner, or keeps a translated copy. Propose changes using "Shrink An Existing Entry File" in ADOPTION.md. Converting AGENTS.md to a symlink is optional; ask before doing it.
+Review Definition Harness from <repo URL> and report which improvements this repository could take.
+Do not rename documentation directories, delete local copies of framework files, or rewrite existing definitions to match the new version.
+Report the compatibility impact first. Apply nothing without approval.
 ```
 
 For an on-demand audit, use `templates/definition-audit.template.md`.
 
 ## What To Capture
 
-Store final behavior, stable rationale, and reusable evaluation criteria in repository docs.
-Record final validation evidence in the PR.
-Use short, concrete language. Use tables or diagrams when they clarify comparisons or relationships.
-Follow the local documentation definition for writing and update rules.
-
-| Knowledge | Stable home |
+| Knowledge | Home |
 | --- | --- |
-| Current behavior, constraints, and outcomes | `*-definition.md` |
-| Stable rationale | `*-principles.md`, when needed |
-| Reusable checks, scenarios, or rubrics | `*-evaluation-definition.md`, when ordinary tests are not enough |
-| Ownership, boundaries, dependencies, and lifecycle | `architecture.md` |
-| Planning, validation, and closure rules | `development-flow.md` |
-| Delegated-work responsibilities | `agent-workflow-definition.md` |
-| How to run, development commands, the reading route, and validation commands | Entry file (`README.md`) |
-| Operational and incident procedures | Runbooks |
+| Current behavior, including the mechanism and what the code does not do | `*-definition.md` |
+| Intent, invariants with violation conditions, rationale, and tradeoffs | `*-principles.md` |
+| How to run, development commands, the reading route, and validation commands | Entry file |
+| Final validation evidence, one-time decisions, and audit reports | The PR |
+| Studies, plans, and other working notes | Any working file. Not authority. |
 
-## Optional Working Docs
+## Shrink An Existing Entry File
 
-Plans and execution state may stay in the task, session, or external harness.
-Create context, implementation-guide, acceptance-contract, progress, or handoff files only when requested by the user or required by explicit repo-local policy.
-Delegation, task duration, multiple sessions, and repeated attempts do not themselves require these files.
-
-When opted in, `IN_PROGRESS.md` may index a detailed `*-progress.md` file.
-Keep the state current and resolve it before closure. Move lasting knowledge into stable docs.
-Existing tracking conventions remain valid.
-
-## Adopt One Scope
-
-### Behavior
-
-1. Create or update a definition for current behavior.
-2. Keep implementation steps, file inventories, and migration history out of it.
-3. Add tests for its observable claims and record validation in the PR.
-4. Add the scope to local documentation rules.
-5. Keep the definition aligned when behavior changes.
-
-Add principles only when rationale must guide future decisions.
-Add an evaluation definition only when stable scenario, visual, workload, rubric, or operational evidence needs a separate contract.
-Ground rubrics in real examples and review failures.
-
-For new docs, prefer a flat directory with `<domain>-definition.md` and optional `<domain>-<topic>-definition.md` names.
-Use at most two semantic naming levels. Keep explicit links to governing definitions and principles; shared prefixes do not establish inheritance.
-Do not create empty domain definitions or rename existing files just to match this convention.
-
-### Rationale And Architecture
-
-- Rationale-only scopes use principles. Link related definitions when behavior becomes concrete.
-- Update architecture only when boundaries, ownership, dependency direction, or lifecycle invariants change.
-
-### Delegated Work
-
-Use the initializer, implementer, evaluator, and closer responsibilities in the agent workflow definition.
-Roles do not require separate agents.
-Define outcome, verification, constraints, iteration policy, and error handling in the task or external harness.
-Repository acceptance and progress files remain optional.
-
-## Existing Docs
-
-Keep useful existing documents and classify them as stable, working, operational, or historical.
-Add definitions where durable behavior authority is needed.
-After work ships, resolve any working docs under local retention rules.
-
-## Entry File
-
-Follow [Entry File](documentation/documentation-definition.md#entry-file) for roles, layouts, ownership, and symlink limits.
-For a new repository, start from `templates/entry-file.template.md`. The recommended layout links the agent path to it:
-
-```sh
-ln -s README.md AGENTS.md
-```
-
-In an existing repository, shrink `README.md` to a routing-only entry with the steps below before converting `AGENTS.md` to a symlink.
-Agents load the symlinked file in every session. Record the agent entry size in bytes before and after the change in the PR. Before the change, count every file that agents load; after it, count `README.md`.
-
-### Shrink An Existing Entry File
-
-Use these steps when an entry file restates definitions or carries content without an owner. The steps are optional for existing adopters.
-Report the findings and ask the user before deleting. A requested shrink may remove entry-file navigation, such as a definition list, that compatible adoption would otherwise preserve.
-Apply the steps to `README.md` and to a separate `AGENTS.md`. Content that exists only in `AGENTS.md` follows the same steps before any symlink conversion.
-
-1. Review the entry file section by section. For each section, find the document that owns the content.
-2. If a definition or another stable document owns the content, confirm that the owner contains every fact. Move missing facts to the owner. If the two copies conflict, report the conflict and ask which is correct. Then delete the section from the entry file.
-3. If no document owns the content, move it to its owner first, then delete it. Behavior goes to a definition. Code structure, test coverage, and generated file names may stay in code and tests.
-4. Replace definition lists with one link to the scope map, the local documentation definition, or the docs directory.
-5. Keep one language, the documentation language. Delete a translated copy after its facts are covered. If the entry files and definitions use different languages, ask the user which language is the documentation language.
-6. Keep each always-visible constraint as one sentence and a link.
-7. Check for orphans. Each document that the removed text linked must still be reachable from its owner, the scope map, or another stable document. Add the missing link to the owner.
-8. Record deleted and moved sections, with their new owners, in the PR.
-
-## PR Closure
-
-- Confirm docs, code, and tests agree for adopted scopes.
-- Record validation commands, results, and required evidence.
-- Update the entry file only when how to run, development commands, the reading route, or validation commands change. A new scope adds a scope map row when a map exists.
-- Update architecture only for changes within its scope.
-- Resolve any working docs or mark them historical.
-
-Final behavior and evidence must be reviewable without repository progress files.
-Follow `documentation/development-flow.md` for the PR format.
+An entry file that restates definitions is a documentation finding. A [Definition Audit](documentation/definition-audit-definition.md) reports each restatement, and a conflict when the copies differ.
+To shrink the file, confirm that the owning document holds every fact, then replace the restatement with a link. Ask before deleting, keep one documentation language, and check that every document the removed text linked is still reachable.
+Shrinking is optional for existing adopters. Converting `AGENTS.md` to a symlink is optional.
 
 ## Optional Definition Audit
 
-A user or explicit local policy may request a [Definition Audit](documentation/definition-audit-definition.md) for an adopted scope.
-Adapt or reference the audit contract and task template; copying them into every adopting repository is not required.
-Include the scope's applicable principles, evaluation definitions, architecture constraints, and operator rules.
-Read claims first, then compare implementation and evidence. Report conflicts, unclear claims, insufficient evidence, and unreviewed areas.
-Keep test coverage separate from conformance findings. Do not assume which pillar needs correction.
-Keep the report in the session or PR unless repository retention is requested or required. Perform agreed repairs separately.
+A user or explicit local policy may request a [Definition Audit](documentation/definition-audit-definition.md).
+Reference the pinned audit contract or adapt it; copying it is not required. Every audit states its window. Keep the report in the session or PR.
 
 ## Framework Versions
 
 Non-breaking updates preserve paths, filenames, and valid adoption shapes.
-New guidance and templates may be adopted gradually; migration is optional.
-Breaking updates must state the incompatibility, explain why it is needed, and provide a migration path.
+Breaking updates state the incompatibility, explain why, and change only what new adopters start from. Existing adopters stay valid and choose whether to upgrade.

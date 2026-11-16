@@ -4,10 +4,10 @@ This document defines document types, writing rules, and update rules for `docum
 
 ## Scope And Paths
 
-- `documentation/` holds behavior, rationale, architecture, evaluation, and process docs.
+- `documentation/` holds the framework's definitions and principles: this document, the documentation principles, the audit contract, and the evolution principles.
 - `README.md` is the entry file. It covers how to run, development commands, the reading route, and validation commands.
 - `AGENTS.md` is the agent entry. It may be a symlink to `README.md`. See [Entry File](#entry-file).
-- `ADOPTION.md` defines adoption modes and compatibility.
+- `ADOPTION.md` defines adoption, starter files, and compatibility.
 
 Keep an adopting repository's existing docs path. Record it in the entry file and the local documentation definition.
 
@@ -38,7 +38,7 @@ Architecture, evaluation, and process are topics, not kinds. These files remain 
 - An item/workflow must obey its system definition. Update the system rules before introducing a conflicting behavior.
 
 Definitions may reference shared principles and adjacent definitions. A scope does not need its own principles file.
-`documentation-principles.md` governs authoring. `programming-principles.md`, when included, governs implementation.
+`documentation-principles.md` governs authoring. Principles for an adopter's own code, such as those in `examples/principles/`, belong to that adopter.
 
 ### Shallow Naming
 
@@ -112,13 +112,14 @@ This rule applies to standalone indexes and exhaustive tables or lists inside ot
 - Preserve existing navigation during compatible adoption. Do not delete or reorganize it solely to adopt this guidance.
 - An opted-in inventory remains navigation. It does not define behavior or replace the linked authority.
 
-### Evaluation Definitions
+### Evaluation
 
-Use a separate evaluation definition when ordinary tests cannot express all required evidence.
+Evaluation is a topic. A repository may keep it in the scope's definition or in a separate evaluation file when ordinary tests cannot express all required evidence.
 
-- Define scenarios, browser checks, workload measurements, logs, or review criteria as needed.
-- For judgment-based review, define observable rubric dimensions, examples, failure patterns, and human calibration. Add weights only when justified.
-- Base criteria on real review needs. Keep tools vendor-neutral unless the repo standardizes on one.
+- Existing scenarios, browser checks, workload measurements, and the evidence a release requires are definitions.
+- An invariant that no check covers yet is a principle. Building the check is work for a working file.
+- A rubric is a principle. Define observable dimensions, examples and anti-patterns from real review, and calibrate it against human review. Revise it when it misses repeated failures. Add weights only when justified.
+- Keep tools vendor-neutral unless the repository standardizes on one.
 
 ## Writing Rules
 
@@ -188,18 +189,8 @@ A scope map is optional. It is a table in the local documentation definition wit
 Create working docs only when requested by the user or required by explicit repo-local policy.
 Delegation, duration, multiple iterations, or crossing sessions does not itself require these files.
 Planning and execution state may stay in the task, session, or external harness.
-
-| File | Optional purpose |
-| --- | --- |
-| `*-acceptance-contract.md` | Completion criteria for active work. May include future behavior. |
-| `*-context.md` | Planning context, options, and decisions. |
-| `*-implementation-guide.md` | Instructions for a specific implementation slice. |
-| `*-progress.md` | Checkpoints, blockers, validation logs, and handoff state. |
-| `IN_PROGRESS.md` | Active state or an index to a progress file. |
-
-The names above are examples. Other working files, such as studies or research notes, are also valid.
-Working docs are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
-When opted in, progress files must contain enough current state to resume without chat history.
+Working docs, such as studies, plans, or progress notes, take any name and are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
+A progress file, when kept, contains enough current state to resume without chat history.
 Before closure, move lasting behavior, rationale, and evaluation rules into the stable docs or runbooks that own them.
 Keep one-time decisions in PR history. Delete working files unless they are intentionally retained as history.
 

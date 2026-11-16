@@ -24,13 +24,13 @@ Agents can move quickly, but without durable in-repo guidance they drift, overfi
 
 This kit treats the repository itself as the place where durable product and engineering knowledge should live.
 
-The model is:
+The model is two nouns and one verb:
 
-- `principles` capture stable intent
-- `definitions` capture current, testable behavior
-- `architecture` captures boundaries and ownership
-- `development flow` keeps docs, code, and tests evolving together
-- the entry file acts as a map, not as an oversized manual; agents load it every session, so it only routes
+- `definitions` capture current behavior, including what the code does not do
+- `principles` capture intent: what the system must achieve and why
+- `audit` checks them against each other, against code and tests, and reports the gaps
+
+Nothing else is required. Architecture, evaluation, and process are topics, not kinds: each statement about them is a definition or a principle. The entry file acts as a map, not a manual; agents load it every session, so it only routes.
 
 The goal is not just better prompting. The goal is a codebase that gradually becomes easier to reason about.
 
@@ -74,27 +74,14 @@ The definitions are not disposable planning artifacts. They remain in the reposi
 
 The docs are part of the operating model of the repository, not just pre-coding paperwork.
 
-## Why Call It A Harness
+## Written In Its Own Terms
 
-If you use the word `harness` here, use it carefully.
+The framework is written in its own two kinds of document: `documentation-definition.md`, `documentation-principles.md`, `definition-audit-definition.md`, and `harness-evolution-principles.md`.
+Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code as data.
 
-In current agentic terminology, `agent harness` usually means the runtime scaffold that gives a model tools, state, and an execution loop. `evaluation harness` usually means the infrastructure that runs tasks and graders.
+The same idea shapes adoption. After adoption the framework dissolves into the repository. The repository's own definitions and principles are its authority, and they evolve with the project. The framework learns from what adopters do well; upgrading is optional.
 
-This repo is neither of those. It does not provide a model runtime, tool loop, scheduler, sandbox, model router, evaluator service, or observability backend.
-
-It is closer to the repository-side contract for an agent engineering harness:
-
-- a lightweight set of structures
-- feedback loops
-- naming conventions
-- update rules
-- quality gates
-
-Together, those make the repository safer and more legible as it grows.
-
-External agent runtimes can execute against this contract. The repository supplies final behavior definitions, stable principles, architecture references, evaluation criteria, validation expectations, and closure rules. The external harness supplies orchestration, tools, model calls, sessions, execution state, approvals, sandboxes, and integrations. Repository planning, progress, and handoff artifacts are optional when requested by the user or required by explicit repo-local policy.
-
-When this framework describes roles such as initializer, implementer, evaluator, or closer, those are work roles and responsibility boundaries, not runtime components. A role may be performed by one agent, multiple agents, a human operator, CI, a browser automation tool, or another external harness.
+This repository is not an agent runtime or an evaluation service. It supplies no model loop, scheduler, sandbox, or approval system. External agent tools act on the repository; the repository supplies the definitions, principles, and audit contract they act against. Plans, progress, and handoff state stay in those tools unless a repository chooses to keep them.
 
 ## Why It Works For Legacy Repositories
 

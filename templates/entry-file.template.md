@@ -2,6 +2,8 @@
 
 <One sentence: what this repository is.>
 
+<!-- For an existing README, copy only the "Read Before Changing" section. -->
+
 This file is the only entry for humans and agents. `AGENTS.md` is a symlink to it.
 It only routes. Behavior, operations, values, and limits live in `<docs path>/`; this file does not restate them.
 

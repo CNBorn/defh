@@ -12,7 +12,12 @@
 - Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and framework changes learn from adopters.
 - The adopted-scope table becomes an optional scope map. A scope is adopted when it has a definition; the definition marks the boundary. When a map is kept, it is the only document index. Existing adopted-scope tables remain valid as scope maps.
 - Every Definition Audit states its window: start and end revisions. The start is the end of the previous audit of the same scope, when known. A last-run record is optional; the recommended place is the audit PR title, such as `Definition audit: <scope> through <revision>`. A file-based record, including an existing "Reviewed against" line, remains valid and is not authority.
-- Existing adopters need no action for this part. No file is renamed or removed.
+- 2.0 draft, second part: remove framework files that are not definitions, principles, or the audit: `development-flow.md`, `agent-workflow-definition.md`, and the generic `architecture.md`. Rubric guidance moves to the evaluation topic in the documentation definition.
+- Move `code-structure-principles.md` and `programming-principles.md` to `examples/principles/`. They are principles an adopter may write for its own code, not framework rules.
+- Reduce templates from twelve to five: definition (system and item merged; records what the code does not do), principles (with an optional violation condition), definition audit, entry file (absorbs the README docs section), and local documentation rules. Remove the evaluation, architecture, acceptance-contract, agent-progress, and adopted-scope templates.
+- Shorten `ADOPTION.md`: one adoption path, four starter files, the entry-file shrink as an audit finding. Remove delegated-work, working-doc, and PR-closure guidance.
+- Rewrite the POSITIONING core idea as two nouns and one verb, and replace "Why Call It A Harness" with "Written In Its Own Terms".
+- Existing adopters need no action. Local copies of removed files remain valid as governing topic files or as working files. Nothing in an adopted repository is renamed or removed.
 - Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
 
 ## 1.4.2
