@@ -2,6 +2,8 @@
 
 <One sentence: what this repository is.>
 
+<!-- For an existing README, copy only the "Read Before Changing" section. -->
+
 This file is the only entry for humans and agents. `AGENTS.md` is a symlink to it.
 It only routes. Behavior, operations, values, and limits live in `<docs path>/`; this file does not restate them.
 
@@ -17,7 +19,7 @@ Operations for each feature are in the definition that owns it.
 
 ## Read Before Changing
 
-1. [Documentation rules](<docs path>/documentation-definition.md): document types, naming, workflow, and the **adopted-scope table**. Find each scope's definition, principles, and validation there. This file does not list them.
+1. [Documentation rules](<docs path>/documentation-definition.md): local documentation choices, governing files, and the optional **scope map**. Find each scope's definition, principles, and validation there or in `<docs path>/`. This file does not list them.
 2. <Shared principles that every change must follow, if any.>
 3. The definition for the affected scope, and the shared rules it links.
 

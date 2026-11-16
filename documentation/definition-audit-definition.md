@@ -5,9 +5,10 @@ It reports conflicts and uncertainty for a stated scope and repository state.
 
 ## Scope
 
-- Include the selected behavior definitions and their applicable system definitions, principles, evaluation definitions, and architecture constraints.
+- Include the selected behavior definitions and their applicable domain definitions, principles, evaluation definitions, and architecture constraints.
 - Include process rules, entry-file instructions, and runbooks when they govern the audited behavior or workflow.
-- When the entry file restates content that a definition owns, report the restatement as a documentation finding. Report it as a conflict when the two copies differ.
+- When any document, including the entry file, restates content that another authority file owns, report the restatement as a documentation finding. Report it as a conflict when the two copies differ.
+- Report non-authority content inside a definition: per-run evidence, review history, and test or source inventories written as behavior claims. Name where it belongs, such as a working file or the PR. A last-run record kept as a record, such as a ledger table or a "Reviewed against" line, is not reported.
 - The name does not exclude principles or other relevant authority. Keep each document's role distinct.
 - Default to the requested adopted scope. Audit all adopted scopes only when requested. Do not assume undocumented areas are adopted.
 - An audit may cover a rationale-only or process scope. Report which claims can be checked and which require human judgment.
@@ -21,10 +22,12 @@ Useful triggers include scoped adoption, substantial refactors, release preparat
 Before inspecting implementation, record:
 
 - requested scope, governing documents, and exclusions
-- repository revision and any relevant uncommitted changes
+- the window: the start and end revisions the audit covers, and any relevant uncommitted changes
 - available validation commands, environments, and evidence
 - limits on execution, time, or cost, when supplied
 
+The end revision is the repository state the audit reads. The start revision is the end of the previous audit of the same scope, when one is known. Without a previous audit, the window starts at the beginning of history or at a revision the requester names.
+Changes inside the window get the closest attention. Claims outside the window may still be checked.
 If the scope is unclear, resolve it before claiming complete coverage.
 Scope expansion must be explicit. Related documents may be read without claiming their entire scope was audited.
 
@@ -56,14 +59,28 @@ Missing tests do not prove an implementation conflict. Passing tests do not prov
 An unsuccessful source search does not prove absent behavior. Static support does not establish runtime or deployment behavior.
 Principle-based findings must cite the decision rule, observed choice, and reasoning. Mark judgment or unresolved tradeoffs explicitly.
 
+### Principle Results
+
+Report principle results in their own section. Do not count them with claim results.
+
+| Result | Meaning |
+| --- | --- |
+| Followed | Current behavior, as the definitions record it and the evidence confirms, satisfies the principle. |
+| Not guaranteed | The principle states a violation condition, and the recorded mechanism does not prevent it. No violation was observed. This is a gap; see [Intent And Gaps](documentation-principles.md#intent-and-gaps). |
+| Violated | Evidence shows the violation condition occurring, or the observed choice contradicts the principle. |
+
+A principle without a violation condition is followed or violated, with the reasoning.
+Report when a principle lacks a violation condition or a definition does not record the mechanism, because the audit then cannot find gaps. [Intent And Gaps](documentation-principles.md#intent-and-gaps) owns the rules for gaps.
+
 ## Report Contract
 
 The report must include:
 
-- scope, repository state, governing documents, and exclusions
+- scope, window (start and end revisions), governing documents, and exclusions
 - a claim-to-evidence table with claim references, results, implementation evidence, and separate test evidence
 - actionable findings with observed behavior, expected behavior or principle, impact, evidence, and recommended next action
 - documentation conflicts and material behavior without a definition within the selected scope
+- principle results in a separate section, with each gap and the decision it needs
 - commands run, results, and evidence or environments that were unavailable
 - coverage: claims reviewed, unresolved claims, and documents or areas not checked
 - any scope or execution limits that prevented completion
@@ -78,13 +95,23 @@ Even a report with no conflicts must state its evidence and coverage limits; it 
 The audit reports differences. It does not authorize repairs or changes to governing rules.
 When the user also requests repairs, capture findings before making changes and verify the affected claims afterward.
 Do not rewrite definitions to match code merely to clear a finding.
+Gaps are reported when found and close only as [Intent And Gaps](documentation-principles.md#intent-and-gaps) states.
 
 Keep the report in the session or PR by default. Create a repository report only when requested or required by explicit repo-local policy.
 Capture lasting behavior, rationale, and reusable checks in their existing authoritative documents after an agreed correction.
 An audit report is evidence, not new behavior authority.
 
+### Last-Run Record
+
+A last-run record lets the next audit of the same scope find its start revision. It is optional.
+
+- Recommended: put the scope and end revision in the audit PR title or first line, such as `Definition audit: <scope> through <revision>`. The next audit finds it by searching PRs. No shared file is needed, so concurrent audits do not conflict.
+- A repository may keep the record in a file instead, such as a table of review angles and their last end revisions. The record is not authority; keep it out of the claims that an audit checks.
+- Items deferred to a later audit go with the record.
+- An existing "Reviewed against <revision>" line in a document is a file-based last-run record. It remains valid, is not a claim, and may serve as the start of the next window.
+
 ## Boundaries
 
 - Agents, people, or external tools may perform the audit. Separate agents are not required.
-- Definition Harness specifies the contract; it does not provide an audit runtime, scheduler, or command.
+- defh specifies the contract; it does not provide an audit runtime, scheduler, or command.
 - Audits complement tests, CI, and code review. They do not replace required validation.

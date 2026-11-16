@@ -1,12 +1,12 @@
 # Architecture Overview
 
-This document defines the high-level architecture for a helpdesk platform: request intake, routing, agent work, and escalation boundaries.
+This document describes the boundaries of the helpdesk platform: request intake, routing, work management, and adapters. Statements under "Architectural Intent" are principles. All other statements describe the current structure.
 
 ## Architectural Intent
 
-- Keep ticket ownership explicit.
-- Keep routing policy testable and reviewable.
-- Separate product rules from transport and vendor adapters.
+- Ticket ownership stays explicit.
+- Routing policy stays testable and reviewable.
+- Product rules stay separate from transport and vendor adapters.
 
 ## Runtime Boundaries
 
@@ -16,7 +16,7 @@ This document defines the high-level architecture for a helpdesk platform: reque
 
 2. Routing Layer
 - Applies priority, queue, and assignment policy.
-- Decides whether escalation rules should trigger.
+- Decides whether escalation rules trigger.
 
 3. Work Management Layer
 - Owns ticket state transitions, SLA timers, comments, and assignments.
@@ -24,17 +24,17 @@ This document defines the high-level architecture for a helpdesk platform: reque
 4. Adapter Layer
 - Integrates with email delivery, CRM sync, chat notifications, and analytics.
 
-## Ownership Invariants
+## Ownership
 
-- Ticket status and assignment are owned by the work management layer.
-- Routing recommendations do not directly mutate persistent ticket state without an explicit transition step.
-- Adapter payloads are derived outputs, not source-of-truth state.
+- The work management layer owns ticket status and assignment. Other layers change them only by requesting a transition.
+- Routing returns a recommendation. The work management layer applies it as a transition.
+- Adapter payloads are derived from internal contracts. They are not a source of ticket state.
 
-## Dependency Direction Rules
+## Dependency Direction
 
-- Intake may depend on normalization contracts.
-- Routing may depend on ticket contracts and policy definitions.
-- Adapters consume internal contracts and external schemas, but should not own routing policy.
+- Intake depends on normalization contracts.
+- Routing depends on ticket contracts and policy configuration.
+- Adapters depend on internal contracts and external schemas. They contain no routing policy.
 
 ## Non-goals
 

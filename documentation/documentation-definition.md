@@ -4,31 +4,42 @@ This document defines document types, writing rules, and update rules for `docum
 
 ## Scope And Paths
 
-- `documentation/` holds behavior, rationale, architecture, evaluation, and process docs.
+- `documentation/` holds the framework's definitions and principles: this document, the documentation principles, the audit contract, and the evolution principles.
 - `README.md` is the entry file. It covers how to run, development commands, the reading route, and validation commands.
 - `AGENTS.md` is the agent entry. It may be a symlink to `README.md`. See [Entry File](#entry-file).
-- `ADOPTION.md` defines adoption modes and compatibility.
+- `ADOPTION.md` is a governing topic file for this repository. It owns adoption steps, starter files, prompts, and compatibility notes.
 
 Keep an adopting repository's existing docs path. Record it in the entry file and the local documentation definition.
 
 ## Document Types
 
-| Type | File | Purpose |
+Two kinds of document are authority. [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority) gives the test and the rationale.
+
+| Kind | File | Holds |
 | --- | --- | --- |
-| Definition | `<scope>-definition.md` | Current behavior, constraints, terms, and observable outcomes. Authoritative for its scope. |
-| Principle | `<scope>-principles.md` | Stable rationale and decision rules. Guides definitions without replacing them. |
-| Evaluation definition | `<scope>-evaluation-definition.md` | Reusable checks, scenarios, rubrics, and required evidence. Complements behavior definitions. |
-| Architecture reference | `architecture.md` | Boundaries, ownership, dependency direction, and lifecycle invariants. |
-| Process document | `development-flow.md` | Planning, implementation, validation, and closure rules. |
+| Definition | `<scope>-definition.md` | Current behavior: the mechanism, including what the code does not do, constraints, terms, outcomes, boundaries, and existing checks. Every statement is checkable. |
+| Principles | `<scope>-principles.md` | Intent: goals, invariants, rationale, tradeoffs, and decision rules. A principle may be checkable and should state its violation condition when one can be stated. Guides definitions without replacing them. |
+
+Topic files that the local documentation rules name as governing, such as runbooks, are also authority. Other files are not authority. Working files, such as studies and plans, need no type.
+
+Architecture, evaluation, and process are topics, not kinds. These files remain valid, and their statements are definitions or principles by the same test:
+
+| Topic file | Covers |
+| --- | --- |
+| `<scope>-evaluation-definition.md` | Existing checks, scenarios, rubrics with pass conditions that gate acceptance, and the evidence a release requires (definition). Invariants that no check covers yet, and rubrics that only guide judgment (principles). Work to build a missing check belongs in a working file. |
+| `architecture.md` | Boundaries, ownership, and dependency direction (definition). Architectural intent (principles). |
+| Process file, such as a development flow | Required end state of a change (definition). Working preferences (principles). |
+| Runbooks | Operational and incident procedures that operators must follow (definition). Operational judgment calls (principles). |
 
 ### Definition Levels
 
-- A system definition sets baseline rules for a domain, such as authentication, billing, or job orchestration.
-- An item/workflow definition applies those rules to a specific flow, policy, command, or interface.
-- An item/workflow must obey its system definition. Update the system rules before introducing a conflicting behavior.
+- A domain definition sets baseline rules for a domain, such as authentication or job orchestration.
+- A topic definition applies those rules to a specific flow, policy, command, or interface.
+- A topic definition must obey the domain definition it inherits from. Update the domain rules before introducing a conflicting behavior.
+- Existing files that use the older terms "system definition" and "item definition" remain valid.
 
 Definitions may reference shared principles and adjacent definitions. A scope does not need its own principles file.
-`documentation-principles.md` governs authoring. `programming-principles.md`, when included, governs implementation.
+`documentation-principles.md` governs authoring. Principles for an adopter's own code, such as those in `examples/principles/`, belong to that adopter.
 
 ### Shallow Naming
 
@@ -45,8 +56,8 @@ Multiword domains and topics do not add semantic levels. Document-type suffixes,
 
 - Use stable domain terms. Do not encode source layout, numeric ordering, or a deeper category chain in filenames.
 - A shared prefix groups documents for discovery. It does not establish authority or inheritance.
-- State applicable system definitions under `Inherits From` or an equivalent explicit link. Name related principles and cross-domain constraints in the document.
-- Each stated inheritance relationship applies the system rules to the item's scope. Related links alone do not imply inheritance.
+- State applicable domain definitions under `Inherits From` or an equivalent explicit link. Name related principles and cross-domain constraints in the document.
+- Each stated inheritance relationship applies the domain rules to the topic's scope. Related links alone do not imply inheritance.
 - Create a domain definition only when it has baseline rules to own. A topic may stand alone.
 - Shared principles may govern several definitions. A topic does not need its own principles file.
 - Apply consistent terms in the document's language. Existing naming conventions do not require translation.
@@ -76,7 +87,7 @@ Ownership:
 - The entry file must not restate steps, parameters, defaults, limits, or constraints that a definition owns.
 - The entry file describes a workflow directly only when no definition owns it, such as installation and development commands.
 - Each always-visible constraint is one sentence and a link to the document that owns it.
-- The local documentation definition, through its adopted-scope table when one exists, is the only document index. The entry file links to it and does not list definitions.
+- When the repository keeps a [scope map](#scope-map), the map is the only document index. The entry file links to it and does not list definitions. Without a map, the entry file links to the docs directory or the local documentation definition.
 - Content without an owner does not go in the entry file. Move it to the document that owns it, or leave it to code and tests. Examples are code structure, test coverage lists, generated file names, and per-feature descriptions.
 - Write the entry file in the repository's documentation language, which is the language of its definitions. Do not keep a translated copy of the entry file or of definition content.
 - Other tool-specific entry paths, such as `CLAUDE.md`, may also be relative symlinks to `README.md`.
@@ -97,18 +108,19 @@ Unless the user requests one or explicit repo-local policy requires one, agents 
 This rule applies to standalone indexes and exhaustive tables or lists inside other documents.
 
 - Use a short, task-oriented set of entry points and explicit related-document links.
-- Adopted-scope tables may record authority and validation boundaries. They do not need to enumerate every document in a scope.
+- A scope map may record authority and validation for each scope. It does not need to enumerate every document in a scope.
 - Generated inventories and one-time discovery output are permitted. Do not copy generated listings into stable docs for manual upkeep.
 - Preserve existing navigation during compatible adoption. Do not delete or reorganize it solely to adopt this guidance.
 - An opted-in inventory remains navigation. It does not define behavior or replace the linked authority.
 
-### Evaluation Definitions
+### Evaluation
 
-Use a separate evaluation definition when ordinary tests cannot express all required evidence.
+Evaluation is a topic. A repository may keep it in the scope's definition or in a separate evaluation file when ordinary tests cannot express all required evidence.
 
-- Define scenarios, browser checks, workload measurements, logs, or review criteria as needed.
-- For judgment-based review, define observable rubric dimensions, examples, failure patterns, and human calibration. Add weights only when justified.
-- Base criteria on real review needs. Keep tools vendor-neutral unless the repo standardizes on one.
+- Existing scenarios, browser checks, workload measurements, and the evidence a release requires are definitions.
+- An invariant that no check covers yet is a principle. Building the check is work for a working file.
+- A rubric with stated pass conditions that gates acceptance is a definition. A rubric that only guides judgment is a principle. Either way, define observable dimensions, examples and anti-patterns from real review, and calibrate it against human review. Revise it when it misses repeated failures. Add weights only when justified.
+- Keep tools vendor-neutral unless the repository standardizes on one.
 
 ## Writing Rules
 
@@ -159,27 +171,28 @@ See [Definition Audit](definition-audit-definition.md) for the audit contract.
 ## Scoped Adoption
 
 A scope may be a subsystem, workflow, API, operator process, or product area.
+A scope is adopted when it has a definition. The definition marks the boundary; no separate list is required.
 Complete repository coverage is not required. For each adopted scope, keep definitions, principles, tests, and validation expectations aligned.
+Code without a definition keeps its existing practice. An audit reports missing definitions only within the scope it was asked to check.
 Existing full-adoption repositories keep their structure.
+
+### Scope Map
+
+A scope map is optional. It is a table in the local documentation definition with one row per scope: the scope, its definition, its principles, and how it is verified.
+
+- Keep a map when readers need one place to find each scope's authority and checks. Skip it when the docs directory and links are enough.
+- When a map exists, it is the only document index. A new scope adds one row in the same change as its first definition.
+- The map is navigation. It is not authority and does not replace the definitions it links.
+- Existing adopted-scope tables remain valid as scope maps.
 
 ## Optional Working Docs
 
-Create working docs only when requested by the user or required by explicit repo-local policy.
-Delegation, duration, multiple iterations, or crossing sessions does not itself require these files.
+defh neither requires nor limits working docs. A repository may set its own rules for them.
+Delegation, duration, multiple iterations, or crossing sessions does not itself require them.
 Planning and execution state may stay in the task, session, or external harness.
-
-| File | Optional purpose |
-| --- | --- |
-| `*-acceptance-contract.md` | Completion criteria for active work. May include future behavior. |
-| `*-context.md` | Planning context, options, and decisions. |
-| `*-implementation-guide.md` | Instructions for a specific implementation slice. |
-| `*-progress.md` | Checkpoints, blockers, validation logs, and handoff state. |
-| `IN_PROGRESS.md` | Active state or an index to a progress file. |
-
-Working docs are not long-term behavior authority.
-When opted in, progress files must contain enough current state to resume without chat history.
-Before closure, move lasting behavior, rationale, and evaluation rules into the stable docs or runbooks that own them.
-Keep one-time decisions in PR history. Delete working files unless they are intentionally retained as history.
+Working docs, such as studies, plans, or progress notes, take any name and are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
+A progress file, when kept, contains enough current state to resume without chat history.
+Lasting conclusions move to definitions or principles; see [Working Files](documentation-principles.md#working-files). One-time decisions may stay in PR history.
 
 ## Update And Review
 
@@ -192,8 +205,8 @@ When behavior changes, search docs by scope terminology and check the relevant d
 | Checks, rubrics, or evidence requirements | Matching evaluation definitions |
 | Boundaries, ownership, dependencies, or lifecycle | `architecture.md` |
 | User/operator workflows or operations that a definition owns | That definition only |
-| New adopted scope | Adopted-scope table only |
+| New adopted scope | Its first definition, and the scope map row when a map exists |
 | How to run, development commands, reading route, or validation commands | Entry file. See [Entry File](#entry-file). |
 
-Before merge, remove stale terminology and confirm docs match the final implementation.
-Verify `tested` and `documented` separately.
+When a change is merged, the documents it touches use no stale terms, and the definitions it touches match the final implementation. This describes the end state of a change, not a required step.
+Tested and documented are different; see [Tested And Documented Are Different](documentation-principles.md#tested-and-documented-are-different).

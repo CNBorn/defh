@@ -2,9 +2,16 @@
 
 ## Short Version
 
-Definition Harness is a spec-anchored repository harness for making software projects legible and evolvable over time.
+Two kinds of document and one action.
+Definitions say what the system does now. Principles say what it must achieve and why. Audit finds where they disagree with each other, with the code, and with the tests.
 
-It is not only for greenfield AI-native projects. It is designed so older repositories can add structure gradually, subsystem by subsystem, without adopting a heavy process all at once.
+That is the whole framework. There is no required process: no lifecycle of specs, plans, and tasks to follow, no roles to play, no tracking files to keep. An audit reports what is inconsistent; it does not say who fixes it or how. A capable agent reads the finding and works out the change itself.
+
+It is small on purpose. Agents can already do most of the work. What runs out is attention, the reader's and the agent's. Every extra concept is something each session must load, understand, and then decide to skip. Two nouns and one verb fit in every session's context, every time.
+
+It is inspired by Lisp, and so is its name. defh is short for Definition Harness; the `def` comes from Lisp's `defun`, `defvar`, and `defmacro`, which define things. The framework is written in its own two kinds of document, so the rules and the knowledge they govern have the same form, and an audit can check the framework itself. After adoption the framework dissolves into the repository: the repository's own definitions and principles become the authority and evolve with the project.
+
+It works for new repositories and for old ones. An existing repository starts with one scope and grows from there.
 
 ## The Problem
 
@@ -22,15 +29,17 @@ Agents can move quickly, but without durable in-repo guidance they drift, overfi
 
 ## The Core Idea
 
-This kit treats the repository itself as the place where durable product and engineering knowledge should live.
+defh treats the repository itself as the place where durable product and engineering knowledge should live. Definitions and principles are not disposable planning artifacts: they stay in the repository and keep shaping maintenance, refactors, tests, reviews, and future agent work.
 
-The model is:
+The model is two nouns and one verb:
 
-- `principles` capture stable intent
-- `definitions` capture current, testable behavior
-- `architecture` captures boundaries and ownership
-- `development flow` keeps docs, code, and tests evolving together
-- the entry file acts as a map, not as an oversized manual; agents load it every session, so it only routes
+- `definitions` capture current behavior, including what the code does not do
+- `principles` capture intent: what the system must achieve and why
+- `audit` checks them against each other, against code and tests, and reports the gaps
+
+Nothing else is required. Architecture, evaluation, and process are topics, not kinds: each statement about them is a definition or a principle. The entry file acts as a map, not a manual; agents load it every session, so it only routes.
+
+When behavior does not guarantee an intent, nobody writes the gap down as documentation. The definition records the facts, including what the code does not do; the principle states the intent and, when it can, the condition that would violate it. The audit puts the two side by side and reports the gap. Editing the principle does not make the gap go away; only a code change or an explicit, reasoned acceptance of the risk does.
 
 The goal is not just better prompting. The goal is a codebase that gradually becomes easier to reason about.
 
@@ -44,14 +53,16 @@ Many spec-driven workflows are centered on the lifecycle of a piece of work:
 
 That is useful, but it is not the main focus here.
 
-This kit is centered on the lifecycle of repository knowledge:
+Those workflows ask every contributor, human or agent, to remember a process. This framework asks them to remember two nouns and one verb.
+
+defh is centered on the lifecycle of repository knowledge:
 
 `intent -> behavior -> implementation -> verification -> maintenance`
 
 The difference matters.
 
 - In many spec-mode systems, the feature spec is the center.
-- In this kit, the repository's long-lived knowledge layer is the center.
+- In defh, the repository's long-lived knowledge layer is the center.
 
 That makes the framework:
 
@@ -60,41 +71,14 @@ That makes the framework:
 - more suitable for refactors and long-term operation
 - more useful for future humans and future agent runs
 
-## Why "Spec-Anchored"
+## Written In Its Own Terms
 
-This framework is best described as `spec-anchored`.
+The framework is written in its own two kinds of document: `documentation-definition.md`, `documentation-principles.md`, `definition-audit-definition.md`, and `evolution-principles.md`.
+Rules and the knowledge they govern have the same form, so an audit can check the framework itself. This is the idea Lisp calls homoiconicity: code and data share one representation, so a program can read and change programs. Here, the rules for documentation are documentation, and the audit that checks a repository also checks the framework.
 
-The definitions are not disposable planning artifacts. They remain in the repository and continue shaping:
+The same idea shapes adoption. After adoption the framework dissolves into the repository. The repository's own definitions and principles are its authority, and they evolve with the project. The framework learns from what adopters do well; upgrading is optional.
 
-- maintenance
-- refactors
-- tests
-- reviews
-- future agent behavior
-
-The docs are part of the operating model of the repository, not just pre-coding paperwork.
-
-## Why Call It A Harness
-
-If you use the word `harness` here, use it carefully.
-
-In current agentic terminology, `agent harness` usually means the runtime scaffold that gives a model tools, state, and an execution loop. `evaluation harness` usually means the infrastructure that runs tasks and graders.
-
-This repo is neither of those. It does not provide a model runtime, tool loop, scheduler, sandbox, model router, evaluator service, or observability backend.
-
-It is closer to the repository-side contract for an agent engineering harness:
-
-- a lightweight set of structures
-- feedback loops
-- naming conventions
-- update rules
-- quality gates
-
-Together, those make the repository safer and more legible as it grows.
-
-External agent runtimes can execute against this contract. The repository supplies final behavior definitions, stable principles, architecture references, evaluation criteria, validation expectations, and closure rules. The external harness supplies orchestration, tools, model calls, sessions, execution state, approvals, sandboxes, and integrations. Repository planning, progress, and handoff artifacts are optional when requested by the user or required by explicit repo-local policy.
-
-When this framework describes roles such as initializer, implementer, evaluator, or closer, those are work roles and responsibility boundaries, not runtime components. A role may be performed by one agent, multiple agents, a human operator, CI, a browser automation tool, or another external harness.
+This repository is not an agent runtime or an evaluation service. It supplies no model loop, scheduler, sandbox, or approval system. External agent tools act on the repository; the repository supplies the definitions, principles, and audit contract they act against. Plans, progress, and handoff state stay in those tools unless a repository chooses to keep them.
 
 ## Why It Works For Legacy Repositories
 
@@ -127,7 +111,7 @@ This framework does not replace engineering controls such as:
 
 It works with them.
 
-The repository harness helps the project preserve intent and behavior.
+defh helps the project preserve intent and behavior.
 The engineering toolchain helps prevent that behavior from degrading silently.
 
 Together, they create a more stable environment for both human and agent contribution.

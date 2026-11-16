@@ -1,41 +1,31 @@
 # VIP Escalation Definition
 
+This document defines how the platform escalates unresolved VIP tickets now.
+
 ## Scope
 
-- Defines the workflow for escalating unresolved VIP tickets.
+- Defines the escalation workflow for unresolved VIP tickets.
 
-## Inherits From
+## Related Definitions
 
-- [Ticket routing definition](ticket-routing-definition.md)
+- [Ticket routing definition](ticket-routing-definition.md): escalation never changes the queue or priority that routing assigned.
 
 ## Governing Principles
 
 - [Support operations principles](support-operations-principles.md): separate notification from state mutation, and escalate by threshold.
 
-## Behavior Summary
-
-- VIP tickets that remain unassigned or unresolved beyond defined thresholds are escalated to a dedicated response path.
-
-## Preconditions
-
-- Ticket belongs to a VIP or enterprise account.
-- Ticket has not reached a terminal state.
-
 ## Behavior
 
-- If a VIP ticket is unassigned for more than 10 minutes, the system pages the on-duty support lead.
-- If a VIP ticket remains unresolved for more than 60 minutes, the system raises an escalation event for leadership review.
-- Escalation notifications must not change ticket priority by themselves; they trigger review, not silent mutation.
+A ticket is eligible when its account has the VIP flag in the CRM or an active enterprise plan, and the ticket has not reached a terminal state.
 
-## Edge Cases
-
-- Duplicate escalation notifications for the same threshold crossing are suppressed.
-- Manually paused tickets do not escalate while the pause is active.
-
-## Defaults And Constraints
-
+- When an eligible ticket is unassigned for more than 10 minutes, the system pages the on-duty support lead.
+- When an eligible ticket is unresolved for more than 60 minutes, the system raises an escalation event for leadership review.
+- Escalation sends notifications only. It does not change ticket priority, status, or assignment.
 - Thresholds are measured from the most recent reopen or creation time, whichever is later.
+- A manually paused ticket does not escalate while the pause is active.
 
-## Verification Notes
+Mechanism: escalation workers scan eligible tickets every minute. Each worker suppresses a repeat notification for a threshold crossing it has already sent, using an in-memory record of sent crossings. The record is not shared between workers and is not persisted; it is empty after a worker restarts.
 
-- Tests should cover threshold crossing, pause suppression, duplicate suppression, and reopen timing reset behavior.
+## Verification
+
+- `make check` runs unit tests for threshold crossing, pause suppression, single-worker duplicate suppression, and the reopen timing reset.
