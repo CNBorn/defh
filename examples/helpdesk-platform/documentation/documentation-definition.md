@@ -1,7 +1,7 @@
 # Documentation Definition
 
 This document records the local documentation choices for the helpdesk platform.
-It applies defh 2.0, pinned at `1d5f66b`. The rules are in the pinned [documentation definition](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/documentation-definition.md) and [documentation principles](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/documentation-principles.md). This document does not copy them; it records only the choices below.
+It applies defh 2.0. Because this example lives inside the defh repository, it links to the rules in this repository instead of a pinned URL. A real adopter pins a release tag or commit. The rules are in the [documentation definition](../../../documentation/documentation-definition.md) and [documentation principles](../../../documentation/documentation-principles.md). This document does not copy them; it records only the choices below.
 
 ## Paths And Entry
 
@@ -42,4 +42,4 @@ This table is the only document index. A new scope adds a row in the same change
 
 ## Audit
 
-Definition Audit follows the pinned [audit contract](https://github.com/CNBorn/definition-harness/blob/1d5f66b/documentation/definition-audit-definition.md). The last-run record goes in the audit PR title: `Definition audit: <scope> through <revision>`.
+Definition Audit follows the [audit contract](../../../documentation/definition-audit-definition.md). The last-run record goes in the audit PR title: `Definition audit: <scope> through <revision>`.

@@ -7,9 +7,9 @@ After adoption, the repository's own definitions and principles are its authorit
 
 ## Compatibility
 
-The released version is in `VERSION`. The next version, 2.0, is unreleased; `CHANGELOG.md` lists it under "Unreleased". Until it is released, pin a commit.
+The current version is in `VERSION`. Pin a release tag or a commit on `main` when you adopt.
 2.0 is a breaking release for the framework itself. It removes framework files and templates that earlier versions offered: development flow, agent workflow, the architecture starter, and the evaluation, acceptance, progress, and adopted-scope templates. The reason is that the framework keeps only definitions, principles, and audit.
-Before 2.0 the framework was called Definition Harness. Local rules, prompts, and links that use that name or the `definition-harness` repository URL remain valid.
+Before 2.0 the framework was called Definition Harness, and its repository was `CNBorn/definition-harness`; it is now `CNBorn/defh`. Local rules, prompts, and links that use the old name or URL remain valid.
 Repositories that copied those files keep them. They remain valid as topic files when local documentation rules name them as governing, or as working files otherwise. No adopter needs to delete, rename, or rewrite anything.
 Adopted-scope tables remain valid as optional scope maps. Existing paths, names, and navigation remain valid. Upgrading is optional.
 

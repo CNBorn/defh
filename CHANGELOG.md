@@ -1,31 +1,48 @@
 # Changelog
 
-## Unreleased
+## 2.0.0
 
-- 2.0 draft, first part: two kinds of authority. A statement is authority when it lives in a definition or principles file, or in a topic file that local documentation rules name as governing, such as a runbook or `architecture.md`. Definitions describe current behavior, including the mechanism and what the code does not do, and must be checkable. Principles state intent, including checkable invariants that current code may not guarantee; a principle should state its violation condition when one can be stated. Other files are not authority. Audit is the one action that checks them.
-- Gaps between intent and behavior are audit findings, not document content. Principle results are followed, not guaranteed, or violated, reported in their own section. A gap is reported when found, cannot be cleared by editing the principle or removing the exposing claim, and closes only by a code change or a stated risk acceptance in principles.
-- A check that does not exist yet is not a definition: the invariant goes to principles and the work to a working file.
-- Architecture, evaluation, process, and reusable procedures are topics, not document kinds. A definition may keep rationale that governs only its own scope.
-- Working files, such as studies and research notes, are valid under any name, are not authority, and need not be listed by adopters. A status line such as "Draft" does not change authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
-- Add the Same-Change Update principle: a behavior change updates its owning definition, the tests that check the changed claims, and derived outputs such as manuals and skills in the same change. Derived outputs are not authority. Evidence artifacts, such as formal models, follow the scope's definition.
-- Definition Audit also reports non-authority content inside definitions, and any document that restates another authority file.
-- Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and framework changes learn from adopters.
-- The adopted-scope table becomes an optional scope map. A scope is adopted when it has a definition; the definition marks the boundary. When a map is kept, it is the only document index. Existing adopted-scope tables remain valid as scope maps.
-- Every Definition Audit states its window: start and end revisions. The start is the end of the previous audit of the same scope, when known. A last-run record is optional; the recommended place is the audit PR title, such as `Definition audit: <scope> through <revision>`. A file-based record, including an existing "Reviewed against" line, remains valid and is not authority.
-- 2.0 draft, second part: remove framework files that are not definitions, principles, or the audit: `development-flow.md`, `agent-workflow-definition.md`, and the generic `architecture.md`. Rubric guidance moves to the evaluation topic in the documentation definition.
-- Move `code-structure-principles.md` and `programming-principles.md` to `examples/principles/`. They are principles an adopter may write for its own code, not framework rules.
-- Reduce templates from twelve to five: definition (system and item merged; records what the code does not do), principles (with an optional violation condition), definition audit, entry file (absorbs the README docs section), and local documentation rules. Remove the evaluation, architecture, acceptance-contract, agent-progress, and adopted-scope templates.
-- Shorten `ADOPTION.md`: one adoption path, four starter files, the entry-file shrink as an audit finding. Remove delegated-work, working-doc, and PR-closure guidance.
-- Rewrite the POSITIONING core idea as two nouns and one verb, and replace "Why Call It A Harness" with "Written In Its Own Terms".
-- Reduce the local documentation rules template to local choices and links: paths and entry, governing files, gap decisions, validation, the optional scope map, and audit choices. It no longer copies framework rules.
-- Use "domain definition" and "topic definition" for the two definition levels. Older "system" and "item" names remain valid.
-- Clarify the difference between a fact about what the code does not do (definition) and a gap (audit finding), when working files are created, that `ADOPTION.md` is a governing topic file, and that 2.0 is breaking for the framework but asks nothing of adopters.
-- Rewrite the POSITIONING short version as the project pitch: two kinds of document and one action, no required process, attention as the scarce resource, and the Lisp-inspired idea that the framework is written in its own terms. This repository's validation now includes a self-audit when rules or templates change.
+Definition Harness is now **defh**: two kinds of document, definitions and principles, and one action, audit. There is no required process.
+
+This is a breaking release for the framework's own files: several files and templates are removed. It asks nothing of adopters. Local copies of removed files, adopted-scope tables, file-based audit records, and the old name remain valid. Upgrading is optional.
+
+### Name
+
+- Rename the framework to defh, short for Definition Harness, pronounced "def-H". The `def` follows Lisp's `defun`, `defvar`, and `defmacro`. The repository moves from `CNBorn/definition-harness` to `CNBorn/defh`. Document names and "Definition Audit" are unchanged.
 - Rename `documentation/harness-evolution-principles.md` to `documentation/evolution-principles.md`.
-- Rename the framework to defh, short for Definition Harness, pronounced "def-H". The `def` follows Lisp's `defun`, `defvar`, and `defmacro`. Prompts, templates, and rules use the new name. "Definition Audit", document names, and the repository URL are unchanged. Local rules and prompts that use the old name remain valid.
-- Update the helpdesk platform example to 2.0: local rules reduced to local choices and links, `architecture.md` named as a governing topic file, principles with violation conditions, definitions that record the mechanism including what the code does not do, and a scope map with a verification column.
-- Existing adopters need no action. Local copies of removed files remain valid as governing topic files or as working files. Nothing in an adopted repository is renamed or removed.
-- Update the helpdesk platform example to the 1.4.2 rules: a routing-only entry file with `AGENTS.md` as a symlink, local documentation rules with the adopted-scope table as the only index, and explicit principle and inheritance links. No framework rule changes.
+
+### Two kinds of authority
+
+- A statement is authority when it lives in a definition or principles file, or in a topic file that local documentation rules name as governing, such as a runbook or `architecture.md`. Other files are not authority.
+- Definitions describe current behavior, including the mechanism and what the code does not do, and must be checkable. Principles state intent, including checkable invariants that current code may not guarantee; a principle should state its violation condition when one can be stated.
+- A check that does not exist yet is not a definition: the invariant goes to principles and the work to a working file.
+- Architecture, evaluation, process, and reusable procedures are topics, not document kinds. A definition may keep rationale that governs only its own scope. The two definition levels are now called domain and topic definitions; "system" and "item" remain valid.
+- Working files, such as studies and research notes, are valid under any name, are not authority, and need not be listed. A "Draft" status line does not change authority. A conclusion is lasting when a later change must respect it, and moves to a definition or principles. Authority files may cite working files as evidence but must state the rule themselves.
+- Add the Same-Change Update principle: a behavior change updates its owning definition, the tests that check the changed claims, and derived outputs such as manuals and skills in the same change. Derived outputs are not authority. Evidence artifacts, such as formal models, follow the scope's definition.
+
+### Audit
+
+- Gaps between intent and behavior are audit findings, not document content. A fact names what the code does or does not do; a gap names an intent the facts fail to meet. Principle results are followed, not guaranteed, or violated, reported in their own section. A gap is reported when found, cannot be cleared by editing the principle or removing the exposing claim, and closes only by a code change or a stated risk acceptance in principles.
+- Every audit states its window: start and end revisions. A last-run record is optional; the recommended place is the audit PR title, such as `Definition audit: <scope> through <revision>`. File-based records, including "Reviewed against" lines, remain valid.
+- Audits also report non-authority content inside definitions, and any document that restates another authority file.
+
+### Adoption
+
+- A scope is adopted when it has a definition. The adopted-scope table becomes an optional scope map; when kept, it is the only document index.
+- `ADOPTION.md` is a governing topic file with one adoption path, four starter files, and prompts. The entry-file shrink becomes an audit finding. Delegated-work, working-doc, and PR-closure guidance is removed.
+- Templates go from twelve to five: definition (system and item merged), principles (with an optional violation condition), definition audit (with principle results), entry file (absorbs the README docs section), and local documentation rules (local choices and links only; no copied rules).
+
+### Removed
+
+- `documentation/development-flow.md`, `documentation/agent-workflow-definition.md`, and the generic `documentation/architecture.md`. Rubric guidance moves to the evaluation topic in the documentation definition.
+- The evaluation, architecture, acceptance-contract, agent-progress, adopted-scope, system-definition, item-definition, and README-docs-section templates.
+- `code-structure-principles.md` and `programming-principles.md` move to `examples/principles/`. They are principles an adopter may write for its own code.
+
+### Evolution and positioning
+
+- Add evolution principles: the framework dissolves into each adopter, local drift is valid, upgrades are optional, and the framework learns from adopters.
+- Rewrite POSITIONING around the pitch: two kinds of document and one action, no required process, attention as the scarce resource, and the Lisp-inspired idea that the framework is written in its own terms. This repository's validation includes a self-audit when rules or templates change.
+- Move the helpdesk platform example to 2.0. Its escalation definition records a mechanism that does not guarantee one of its principles, so an audit of the example finds a gap.
 
 ## 1.4.2
 
