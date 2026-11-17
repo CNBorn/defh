@@ -1,8 +1,13 @@
 # Changelog
 
-## Unreleased
+## 2.0.1
 
-- Write the repository URL into the adoption prompts in `README.md` and `ADOPTION.md`, so a prompt can be copied without edits. No framework rule changes.
+Wording fixes. No rule changes; adopters need no action.
+
+- Write the repository URL into the adoption prompts in `README.md` and `ADOPTION.md`, so a prompt can be copied without edits.
+- State the merge end state of a change once, in the documentation definition's Update And Review. The Same-Change Update principle keeps only the intent, end state rather than steps, and links to it.
+- Remove the progress-file content rule from Optional Working Docs. It contradicted "defh neither requires nor limits working docs". A repository may still set its own rule.
+- Optional Working Docs links to the Working Files principles instead of restating them.
 
 ## 2.0.0
 

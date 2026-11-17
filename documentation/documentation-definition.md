@@ -187,12 +187,9 @@ A scope map is optional. It is a table in the local documentation definition wit
 
 ## Optional Working Docs
 
-defh neither requires nor limits working docs. A repository may set its own rules for them.
+Working docs, such as studies, plans, or progress notes, follow [Working Files](documentation-principles.md#working-files).
 Delegation, duration, multiple iterations, or crossing sessions does not itself require them.
-Planning and execution state may stay in the task, session, or external harness.
-Working docs, such as studies, plans, or progress notes, take any name and are not authority. See [Two Kinds Of Authority](documentation-principles.md#two-kinds-of-authority).
-A progress file, when kept, contains enough current state to resume without chat history.
-Lasting conclusions move to definitions or principles; see [Working Files](documentation-principles.md#working-files). One-time decisions may stay in PR history.
+Planning and execution state may stay in the task, session, or external harness. One-time decisions may stay in PR history.
 
 ## Update And Review
 
@@ -208,5 +205,5 @@ When behavior changes, search docs by scope terminology and check the relevant d
 | New adopted scope | Its first definition, and the scope map row when a map exists |
 | How to run, development commands, reading route, or validation commands | Entry file. See [Entry File](#entry-file). |
 
-When a change is merged, the documents it touches use no stale terms, and the definitions it touches match the final implementation. This describes the end state of a change, not a required step.
+When a change is merged, the documents it touches use no stale terms, and the definitions it touches match the final implementation. See [Same-Change Update](documentation-principles.md#same-change-update).
 Tested and documented are different; see [Tested And Documented Are Different](documentation-principles.md#tested-and-documented-are-different).
