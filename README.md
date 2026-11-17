@@ -12,7 +12,7 @@ It only routes. Rules live in `ADOPTION.md` and `documentation/`; this file does
 Point your coding agent at this repository URL. A local checkout is not required.
 
 ```text
-Use defh from <repo URL>. Read its README and ADOPTION.md. If this repository already adopted an earlier version, follow the earlier-version prompt in ADOPTION.md. Otherwise follow the prompt for your case.
+Use defh from https://github.com/CNBorn/defh. Read its README and ADOPTION.md. If this repository already adopted an earlier version, follow the earlier-version prompt in ADOPTION.md. Otherwise follow the prompt for your case.
 ```
 
 Prompts for a new repository, an existing repository, one scope, and an earlier-version adopter are in [Adoption Prompts](ADOPTION.md#adoption-prompts).

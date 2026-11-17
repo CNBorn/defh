@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Write the repository URL into the adoption prompts in `README.md` and `ADOPTION.md`, so a prompt can be copied without edits. No framework rule changes.
+
 ## 2.0.0
 
 Definition Harness is now **defh**: two kinds of document, definitions and principles, and one action, audit. There is no required process.

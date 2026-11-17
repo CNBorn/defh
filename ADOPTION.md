@@ -48,14 +48,14 @@ Point a coding agent at the defh repository URL with the prompt for your case. A
 New repository, with little or no code:
 
 ```text
-Use defh from <repo URL> for this project's documentation.
+Use defh from https://github.com/CNBorn/defh for this project's documentation.
 Read its README and ADOPTION.md. Add the starter files and adapt paths and validation commands to this project's stack. If the project already has behavior, write the first definition from the code of its highest-risk scope. If it has no code yet, do not write a definition now.
 ```
 
 Existing repository, with code, with or without docs:
 
 ```text
-Use defh from <repo URL> in this existing repository.
+Use defh from https://github.com/CNBorn/defh in this existing repository.
 Do not reorganize the docs tree. Keep this repo's existing docs path.
 Pick one high-risk or high-change scope. Add local documentation rules that name any governing topic files, write or update the definition of that scope from its current behavior, and name the tests or commands that protect its claims.
 ```
@@ -63,7 +63,7 @@ Pick one high-risk or high-change scope. Add local documentation rules that name
 One existing scope:
 
 ```text
-Use defh from <repo URL> to adopt only <scope name> in this repository.
+Use defh from https://github.com/CNBorn/defh to adopt only <scope name> in this repository.
 First inspect the current docs, code, tests, and entry files. Do not reorganize unrelated docs.
 Create or update the current-state definition for <scope name>, add a row to the scope map if the repository keeps one, and identify the tests or validation commands that protect it.
 ```
@@ -71,7 +71,7 @@ Create or update the current-state definition for <scope name>, add a row to the
 Repository that adopted an earlier version:
 
 ```text
-Review defh from <repo URL> and report which improvements this repository could take.
+Review defh from https://github.com/CNBorn/defh and report which improvements this repository could take.
 Do not rename documentation directories, delete local copies of framework files, or rewrite existing definitions to match the new version.
 Report the compatibility impact first. Apply nothing without approval.
 ```
